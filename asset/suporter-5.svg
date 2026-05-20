@@ -1,0 +1,10 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="char" viewBox="0 0 100 100">
+
+        <path d="M 15 100 C 15 65, 85 65, 85 100 Z" fill="#1e3a8a"></path>
+        <polygon points="50,70 42,55 58,55" fill="#ec4899"></polygon>
+        <circle cx="50" cy="35" r="18" fill="#ffedd5"></circle>
+        <path d="M 32 35 C 32 10, 68 10, 68 35 Z" fill="#f472b6"></path>
+        <path d="M 25 35 Q 50 45 75 35 Q 50 30 25 35 Z" fill="#db2777"></path>
+    </symbol>
+</svg>

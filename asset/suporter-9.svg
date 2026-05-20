@@ -1,0 +1,22 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="char" viewBox="0 0 100 100">
+        <defs>
+            <!-- ID Unik untuk clipPath variasi 3 -->
+            <clipPath id="bodyClip3">
+                <path d="M 15 100 C 15 65, 85 65, 85 100 Z"></path>
+            </clipPath>
+        </defs>
+        <g clip-path="url(#bodyClip3)">
+            <rect x="0" y="60" width="100" height="40" fill="#fef08a"></rect>
+            <rect x="15" y="60" width="10" height="40" fill="#1f2937"></rect>
+            <rect x="35" y="60" width="10" height="40" fill="#1f2937"></rect>
+            <rect x="55" y="60" width="10" height="40" fill="#1f2937"></rect>
+            <rect x="75" y="60" width="10" height="40" fill="#1f2937"></rect>
+        </g>
+        <circle cx="50" cy="35" r="18" fill="#ffedd5"></circle>
+        <!-- Rambut Hitam -->
+        <path d="M 32 25 L 35 10 L 40 20 L 45 5 L 50 18 L 55 5 L 60 20 L 65 10 L 68 25 Z"
+            fill="#111827"></path>
+        <rect x="31" y="25" width="38" height="12" fill="#1f2937"></rect>
+    </symbol>
+</svg>

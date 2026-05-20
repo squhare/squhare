@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Squhare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="char1" viewBox="0 0 100 100">
+      <path d="M 15 100 C 15 65, 85 65, 85 100 Z" fill="#374151"></path>
+      <circle cx="50" cy="30" r="18" fill="#ffedd5"></circle>
+      <rect x="36" y="32" width="6" height="3" fill="#f97316"></rect>
+      <rect x="36" y="35" width="6" height="3" fill="#fde68a"></rect>
+      <rect x="58" y="32" width="6" height="3" fill="#f97316"></rect>
+      <rect x="58" y="35" width="6" height="3" fill="#fde68a"></rect>
+      <path d="M 30 50 Q 50 65 70 50 L 75 60 Q 50 75 25 60 Z" fill="#f97316"></path>
+      <path d="M 60 55 L 60 85 L 75 85 L 70 50 Z" fill="#f97316"></path>
+      <rect x="62" y="65" width="11" height="5" fill="#fde68a"></rect>
+      <rect x="64" y="75" width="11" height="5" fill="#fde68a"></rect>
+    </symbol>
+    <symbol id="char2" viewBox="0 0 100 100">
+      <path d="M 15 100 C 15 65, 85 65, 85 100 Z" fill="#4c1d95"></path>
+      <circle cx="50" cy="30" r="18" fill="#fcd5ce"></circle>
+      <rect x="36" y="32" width="6" height="3" fill="#06b6d4"></rect>
+      <rect x="36" y="35" width="6" height="3" fill="#ffffff"></rect>
+      <rect x="58" y="32" width="6" height="3" fill="#06b6d4"></rect>
+      <rect x="58" y="35" width="6" height="3" fill="#ffffff"></rect>
+      <path d="M 30 50 Q 50 65 70 50 L 75 60 Q 50 75 25 60 Z" fill="#06b6d4"></path>
+      <path d="M 60 55 L 60 85 L 75 85 L 70 50 Z" fill="#06b6d4"></path>
+      <rect x="62" y="65" width="11" height="5" fill="#ffffff"></rect>
+      <rect x="64" y="75" width="11" height="5" fill="#ffffff"></rect>
+    </symbol>
+    <symbol id="char3" viewBox="0 0 100 100">
+      <path d="M 15 100 C 15 65, 85 65, 85 100 Z" fill="#7f1d1d"></path> <!-- Red Jersey -->
+      <circle cx="50" cy="30" r="18" fill="#ffedd5"></circle>
+      <rect x="36" y="32" width="6" height="3" fill="#111827"></rect>
+      <rect x="36" y="35" width="6" height="3" fill="#facc15"></rect>
+      <rect x="58" y="32" width="6" height="3" fill="#111827"></rect>
+      <rect x="58" y="35" width="6" height="3" fill="#facc15"></rect>
+      <path d="M 30 50 Q 50 65 70 50 L 75 60 Q 50 75 25 60 Z" fill="#111827"></path>
+      <path d="M 60 55 L 60 85 L 75 85 L 70 50 Z" fill="#111827"></path>
+      <rect x="62" y="65" width="11" height="5" fill="#facc15"></rect>
+      <rect x="64" y="75" width="11" height="5" fill="#facc15"></rect>
+    </symbol>
+    <symbol id="char4" viewBox="0 0 100 100">
+      <path d="M 15 100 C 15 65, 85 65, 85 100 Z" fill="#16a34a"></path>
+      <polygon points="50,70 42,55 58,55" fill="#22c55e"></polygon>
+      <circle cx="50" cy="35" r="18" fill="#fcd5ce"></circle>
+      <path d="M 32 35 C 32 10, 68 10, 68 35 Z" fill="#eab308"></path>
+      <path d="M 25 35 Q 50 45 75 35 Q 50 30 25 35 Z" fill="#ca8a04"></path>
+    </symbol>
+    <symbol id="char5" viewBox="0 0 100 100">
+      <path d="M 15 100 C 15 65, 85 65, 85 100 Z" fill="#1e3a8a"></path>
+      <polygon points="50,70 42,55 58,55" fill="#ec4899"></polygon>
+      <circle cx="50" cy="35" r="18" fill="#ffedd5"></circle>
+      <path d="M 32 35 C 32 10, 68 10, 68 35 Z" fill="#f472b6"></path>
+      <path d="M 25 35 Q 50 45 75 35 Q 50 30 25 35 Z" fill="#db2777"></path>
+    </symbol>
+    <symbol id="char6" viewBox="0 0 100 100">
+      <path d="M 15 100 C 15 65, 85 65, 85 100 Z" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"></path>
+      <polygon points="50,70 42,55 58,55" fill="#14b8a6"></polygon>
+      <circle cx="50" cy="35" r="18" fill="#fcd5ce"></circle>
+      <path d="M 32 35 C 32 10, 68 10, 68 35 Z" fill="#2dd4bf"></path>
+      <path d="M 25 35 Q 50 45 75 35 Q 50 30 25 35 Z" fill="#0f766e"></path>
+    </symbol>
+    <symbol id="char7" viewBox="0 0 100 100">
+      <defs>
+        <!-- ID Unik untuk clipPath variasi 1 -->
+        <clipPath id="bodyClip1">
+          <path d="M 15 100 C 15 65, 85 65, 85 100 Z"></path>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#bodyClip1)">
+        <rect x="0" y="60" width="100" height="40" fill="#f1f5f9"></rect>
+        <rect x="15" y="60" width="10" height="40" fill="#1e3a8a"></rect>
+        <rect x="35" y="60" width="10" height="40" fill="#1e3a8a"></rect>
+        <rect x="55" y="60" width="10" height="40" fill="#1e3a8a"></rect>
+        <rect x="75" y="60" width="10" height="40" fill="#1e3a8a"></rect>
+      </g>
+      <circle cx="50" cy="35" r="18" fill="#ffedd5"></circle>
+      <path d="M 32 25 L 35 10 L 40 20 L 45 5 L 50 18 L 55 5 L 60 20 L 65 10 L 68 25 Z" fill="#4b5563"></path>
+      <rect x="31" y="25" width="38" height="12" fill="#1e3a8a"></rect>
+    </symbol>
+    <symbol id="char8" viewBox="0 0 100 100">
+      <defs>
+        <!-- ID Unik untuk clipPath variasi 2 -->
+        <clipPath id="bodyClip2">
+          <path d="M 15 100 C 15 65, 85 65, 85 100 Z"></path>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#bodyClip2)">
+        <rect x="0" y="60" width="100" height="40" fill="#f1f5f9"></rect>
+        <rect x="15" y="60" width="10" height="40" fill="#ef4444"></rect>
+        <rect x="35" y="60" width="10" height="40" fill="#ef4444"></rect>
+        <rect x="55" y="60" width="10" height="40" fill="#ef4444"></rect>
+        <rect x="75" y="60" width="10" height="40" fill="#ef4444"></rect>
+      </g>
+      <circle cx="50" cy="35" r="18" fill="#fcd5ce"></circle>
+      <!-- Rambut Coklat -->
+      <path d="M 32 25 L 35 10 L 40 20 L 45 5 L 50 18 L 55 5 L 60 20 L 65 10 L 68 25 Z" fill="#78350f"></path>
+      <rect x="31" y="25" width="38" height="12" fill="#ef4444"></rect>
+    </symbol>
+    <symbol id="char9" viewBox="0 0 100 100">
+      <defs>
+        <!-- ID Unik untuk clipPath variasi 3 -->
+        <clipPath id="bodyClip3">
+          <path d="M 15 100 C 15 65, 85 65, 85 100 Z"></path>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#bodyClip3)">
+        <rect x="0" y="60" width="100" height="40" fill="#fef08a"></rect>
+        <rect x="15" y="60" width="10" height="40" fill="#1f2937"></rect>
+        <rect x="35" y="60" width="10" height="40" fill="#1f2937"></rect>
+        <rect x="55" y="60" width="10" height="40" fill="#1f2937"></rect>
+        <rect x="75" y="60" width="10" height="40" fill="#1f2937"></rect>
+      </g>
+      <circle cx="50" cy="35" r="18" fill="#ffedd5"></circle>
+      <!-- Rambut Hitam -->
+      <path d="M 32 25 L 35 10 L 40 20 L 45 5 L 50 18 L 55 5 L 60 20 L 65 10 L 68 25 Z" fill="#111827"></path>
+      <rect x="31" y="25" width="38" height="12" fill="#1f2937"></rect>
+    </symbol>
+  </svg>
+  <div class="container">
+    <div class="content">
+      <div class="fieldWrapper">
+        <div class="viewer"></div>
+        <div class="field">
+          <div class="center"></div>
+          <div class="grid">
+            <div class="cell-top">
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+            </div>
+            <div class="cell-bottom">
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+            </div>
+          </div>
+        </div>
+        <div class="page">
+          <div class="containerPage">
+            <div class="tvFrameWrapper">
+              <div class="tvFrameInline">
+                <div class="tvFrameInlineFront">
+                  <div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div class="tvFrameInlineBack">
+                  <div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div class="tvFrameInlineInside">
+                  <div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div class="tvFrameInlineOutside">
+                  <div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </div>
+              <div class="tvFrameBlock">
+                <div class="tvFrameBlockFront">
+                  <div>
+                  </div>
+                  <div>
+                    SQUHARE
+                  </div>
+                </div>
+                <div class="tvFrameBlockBack">
+                  <div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div class="tvFrameBlockInside">
+                  <div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div class="tvFrameBlockOutside">
+                  <div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="contentPage">
+              <div class="hero">
+                <div class="heroContent">
+                  <div class="left-section">
+                    <div class="content-group">
+                      <h1>
+                        Digital Scoring yang<br />
+                        modern dan profesional
+                      </h1>
+
+                      <p>
+                        Dibuat khusus untuk mempermudah kompetisi
+                      </p>
+                    </div>
+
+                    <div class="content-group">
+                      <p>Ingin mencoba Digital Scoring kami?</p>
+
+                      <button class="btn">Klik di sini!</button>
+                    </div>
+                  </div>
+
+                  <div class="scoreboard">
+                    <div class="player-header">
+                      <div class="player-name">PEMAIN 1</div>
+                      <div class="player-name">PEMAIN 2</div>
+                    </div>
+
+                    <div class="score-section">
+                      <div class="score">6</div>
+                      <div class="score">7</div>
+                    </div>
+
+                    <div class="control-section">
+                      <div class="control-group">
+                        <button>-</button>
+
+                        <span>POINT</span>
+
+                        <button>+</button>
+                      </div>
+
+                      <div class="control-group">
+                        <button>-</button>
+
+                        <span>POINT</span>
+
+                        <button>+</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floor"></div>
+      </div>
+    </div>
+
+    <div class="overlayScroll">
+      <div id="scroll">
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="navbarWrapper">
+        <div class="navbarTop">
+          <span>Squhare</span>
+          <div class="navbarBar">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+        <div class="navbarPage">
+          <span>About</span>
+          <span>Products</span>
+          <span>Contacts</span>
+        </div>
+      </div>
+    </nav>
+    <div class="loadingWrapper">
+      <div class="loading-back"></div>
+      <div class="loading-front"></div>
+    </div>
+    <div class="infoScroll">
+      <div class="infoScrollContent">
+        ↓ㅤScroll to Moveㅤ↑
+      </div>
+    </div>
+    <div class="introContainer">
+      <div class="introContent">
+        <div class="introText">
+          <div>SQUHARE</div>
+          <div>DIGITAL - SCORING</div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
