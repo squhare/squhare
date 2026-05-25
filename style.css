@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Oswald";
   src: url(./font/Oswald-Bold.ttf);
-  font-display: swap;
+  /* font-display: swap;   */
 }
 
 @font-face {
@@ -85,6 +85,7 @@ body {
 
 .navbarTop>span {
   font-weight: bold;
+  cursor: pointer;
 }
 
 
@@ -252,7 +253,8 @@ body {
   transform-style: preserve-3d;
   transform: translateZ(calc(var(--height-field) * -5 / 10));
 }
-.page > * {
+
+.page>* {
   pointer-events: all;
 }
 
@@ -288,6 +290,7 @@ body {
 }
 
 .viewer svg {
+  content-visibility: auto;
   /* height: 100px; */
   /* width: 100px; */
   position: absolute;
@@ -298,11 +301,11 @@ body {
 
 
 .tvFrameWrapper {
-  height: calc(100vh + 30px - 60px);
+  height: calc(100vh + 30px);
   width: calc(100vw + 20px);
   position: absolute;
   left: -10px;
-  top: 50px;
+  top: -10px;
   pointer-events: none;
   /* transform: rotateY(70deg) rotateX(70deg) translateZ(200px); */
   transform-style: preserve-3d;
@@ -354,6 +357,7 @@ body {
   font-family: "Poppins";
   font-size: 14px;
 }
+
 .tvFrameBlockFront>div:last-child,
 .tvFrameBlockBack>div:last-child {
   height: 20px;
@@ -413,18 +417,19 @@ body {
 .containerPage {
   height: 100vh;
   width: 100vw;
-  position: relative;
+  position: fixed;
   transform-style: preserve-3d;
   /* background-color: #0000004e; */
 }
 
 .contentPage {
-  height: calc(100vh - 60px);
+  height: 100vh;
   width: 100%;
   position: absolute;
   bottom: 0;
   display: flex;
   align-items: center;
+  box-shadow: inset 0 0 100px 0px #ffffff24;
   background-color: #235941;
   /* background-color: rgba(255, 0, 0, 0.399); */
 }
@@ -446,10 +451,17 @@ body {
 
 .left-section {
   flex: 1;
-  padding: 32px;
+  padding: 64px;
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
+  background: linear-gradient(to right, #235941ae, #23594172, transparent);
+  opacity: 1;
+  transition: all 1s ease;
 }
 
 .content-group {
@@ -490,8 +502,10 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 32px 0;
-  border-left: 4px solid rgba(255, 255, 255, 0.1);
-  border-right: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+.scoreboard>* {
+  border-inline: 4px solid rgba(255, 255, 255, 0.1);
 }
 
 .player-header {
@@ -504,7 +518,7 @@ body {
   flex: 1;
   padding: 8px;
   text-align: center;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
   color: white;
 }
@@ -518,6 +532,7 @@ body {
 }
 
 .score-section {
+  height: 60%;
   display: flex;
   border-bottom: 4px solid rgba(255, 255, 255, 0.1);
 }
@@ -526,8 +541,11 @@ body {
   flex: 1;
   padding: 32px;
   text-align: center;
-  font-size: 48px;
+  font-size: 8rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
 }
 
@@ -584,6 +602,47 @@ body {
   font-weight: bold;
   color: white;
 }
+
+.containerAbout {
+  height: 100vh;
+  width: 100vw;
+  top: 100vh;
+  position: fixed;
+  transition: all 1s ease-out;
+}
+
+.aboutFile {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutFile .aboutFileHeader:nth-child(odd) {
+  align-self: end;
+  border-top-left-radius: 24px;
+}
+
+.aboutFile .aboutFileHeader:nth-child(even) {
+  align-self: start;
+  border-top-right-radius: 24px;
+}
+
+.aboutFileHeader {
+  background-color: blue;
+  height: 60px;
+  width: 50vw;
+}
+
+.aboutFileContent {
+  height: 100vh;
+  width: 100vw;
+  background-color: blue;
+}
+
+
+
+
 
 
 
@@ -664,9 +723,50 @@ body {
   transition: all 1s ease;
 }
 
+.infoSlider {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  height: calc(100vh - 60px);
+  width: fit-content;
+  /* box-sizing: border-box; */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
 
+.infoSliderWrapper {
+  height: calc(80vh - 60px);
+  max-height: 500px;
+  width: fit-content;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 
+.infoSliderBar {
+  position: absolute;
+  width: 0.5px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
 
+.infoSliderBarActive {
+  position: absolute;
+  width: 0.5px;
+  height: 0%;
+  background-color: rgb(255, 255, 255);
+}
+
+.infoSliderArrow {
+  position: absolute;
+  height: 10px;
+  top: 0;
+  aspect-ratio: 1 / 1;
+}
 
 
 
@@ -770,9 +870,7 @@ body {
     padding: 0;
   }
 
-  .score-section {
-    height: 100%;
-  }
+  .score-section {}
 
   .score {
     display: flex;
@@ -795,6 +893,7 @@ body {
   .content-group:nth-child(1) {
     padding-bottom: 0;
   }
+
   .content-group:nth-child(2) {
     padding-top: 0;
   }

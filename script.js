@@ -5,8 +5,17 @@ const field = document.querySelector(".field");
 const page = document.querySelector(".page");
 const loadingWrapper = document.querySelector(".loadingWrapper");
 const viewer = document.querySelector(".viewer");
+const slider = document.querySelector(".infoSlider");
+const sliderArrow = document.querySelector(".infoSliderArrow");
+const sliderBarActive = document.querySelector(".infoSliderBarActive");
+const leftSection = document.querySelector(".left-section");
+const tryBtn = document.querySelector(".tryBtn");
+
+const containerAbout = document.querySelector(".containerAbout");
+const aboutFiles = document.querySelectorAll(".aboutFile");
 
 const navbarBar = document.querySelector(".navbarBar");
+const home = document.querySelector(".navbarTop>span");
 const navbarPage = document.querySelector(".navbarPage");
 
 const introContainer = document.querySelector(".introContainer");
@@ -30,7 +39,7 @@ let diagonal = 0;
 
 const FIELD_HEIGHT = 2000;
 const FIELD_WIDTH = 4000;
-const animaKeyframe = [0, 500, 1000, 1500];
+const animaKeyframe = [0, 500, 1000, 2500, 4000];
 const platform = () => navigator.userAgentData?.platform;
 const cursorPlatform = ["Windows", "macOS", "Linux"];
 const touchPlatform = ["Android", "iOS"];
@@ -41,7 +50,7 @@ let loading = JSON.parse(localStorage.getItem("loading")) || false;
 
 document.addEventListener("DOMContentLoaded", async () => {
   //? setup start
-  diagonal = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2);
+  diagonal = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2) + 100;
 
   document.documentElement.style.setProperty("--diagonal", `${diagonal}px`);
 
@@ -161,7 +170,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     // if (cursorPlatform.includes(platform()))
-       needUpdate = true;
+    needUpdate = true;
   });
 
   buttonScore.forEach((btn, index) => {
@@ -172,22 +181,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   [...navbarPage.children].forEach((btn, index) => {
     btn.addEventListener("click", () => {
       location.hash = `/${btn.innerText.toLowerCase()}`;
-      scrollY = 1000;
-      needUpdate = true;
+      goTo()
     });
+  });
+  home.addEventListener("click", () => {
+    location.hash = "/";
+    scrollY = 0;
+    needUpdate = true;
   });
 
   navbarBar.addEventListener("click", toggleNavbar);
+  tryBtn.addEventListener("click", () => {
+    scrollY = 1000;
+    needUpdate = true;
+  });
 
   await intro();
   if (location.hash.length > 0) goTo();
 });
 
+function ease(target) {
+  scrollY += (target - scrollY) * 0.1;
+}
+
 function goTo() {
   const hash = location.hash.slice(2);
   console.log(hash);
 
-  if (hash == "about") scrollY = 1000;
+  if (hash == "tentang") ease(4000);
 
   if (pages.includes(hash)) needUpdate = true;
 }
@@ -261,7 +282,7 @@ function animate() {
   const halfHeight = window.innerHeight / 2;
 
   // if (cursorPlatform.includes(platform()) || !!platform())
-    content.style.transform = `translate(${(20 * (mouseX - halfWidth)) / halfWidth}px, ${(20 * (mouseY - halfHeight)) / halfHeight}px)`;
+  content.style.transform = `translate(${(20 * (mouseX - halfWidth)) / halfWidth}px, ${(20 * (mouseY - halfHeight)) / halfHeight}px)`;
 
   const key = animaKeyframe.findIndex(
     (_, i) => scrollY >= animaKeyframe[i] && scrollY <= animaKeyframe[i + 1],
@@ -269,15 +290,22 @@ function animate() {
   let hideView;
 
   infoScrollContent.style.opacity = key < 1 ? 1 : 0;
+  leftSection.style.opacity = key < 1 ? 1 : 0;
 
   animaL = (target) =>
     linear(target, animaKeyframe[key], animaKeyframe[key + 1]);
   animaR = (start) =>
     reverseLinear(start, animaKeyframe[key], animaKeyframe[key + 1]);
-
-  fieldWrapper.style.transform = `translateZ(
-    ${styleValue(45, animaL, {
-      baseValue: 25,
+  
+  slider.style.opacity = key == 2 ? 1 : 0;
+  sliderArrow.style.top =
+  key >= 2 && key <= 3 ? (key == 3 ? "100%" : `${animaL(100)}%`) : 0;
+  sliderBarActive.style.height =
+    key >= 2 && key <= 3 ? (key == 3 ? "100%" : `${animaL(100)}%`) : 0;
+    
+    fieldWrapper.style.transform = `translateZ(
+      ${styleValue(45, animaL, {
+        baseValue: 25,
       divider: 100,
       negative: true,
     })}
@@ -288,9 +316,9 @@ function animate() {
       isDivide: false,
       unit: "deg",
     })}
-  )
-  translateX(
-    ${styleValue(13, animaR)}
+    )
+    translateX(
+      ${styleValue(13, animaR)}
   )
   translateY(
     ${styleValue(3, animaR, {
@@ -301,15 +329,15 @@ function animate() {
   translateZ(calc(var(--height-field) / -2)) 
   translateY(calc(var(--height-field) * 0 / 10))`;
   page.style.transform = `translateZ(calc(var(--height-field) * -5 / 10))`;
-
+  aboutFiles[0].style.top = 0
+  
   if (key < 1) return;
-
+  
   fieldWrapper.style.transform = `
   translateZ(
   ${styleValue(70, animaR, {
     negative: true,
     divider: 100,
-    baseValue: 15
   })}
   ) 
   rotateX(-${animaR(2)}deg) 
@@ -334,11 +362,11 @@ function animate() {
   //     if (hideView) clearTimeout(hideView);
   //   }
   // console.log(getComputedStyle(viewer).display, key)
+
   if (key < 2) return;
 
   //JEDA 1 FRAME
   fieldWrapper.style.transform = `
-  translateZ(-155px) 
   rotateX(0deg) 
   rotateY(0deg) 
   translateX(0px) 
@@ -361,6 +389,8 @@ function animate() {
   //   }, 1000);
 
   if (key < 3) return;
+
+  aboutFiles[0].style.top = `-${animaL(window.innerHeight + 60)}px`
 }
 
 function styleValue(
