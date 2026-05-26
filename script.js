@@ -2,6 +2,7 @@ const content = document.querySelector(".content");
 const overlay = document.querySelector(".overlayScroll");
 const fieldWrapper = document.querySelector(".fieldWrapper");
 const field = document.querySelector(".field");
+const floor = document.querySelector(".floor");
 const page = document.querySelector(".page");
 const loadingWrapper = document.querySelector(".loadingWrapper");
 const viewer = document.querySelector(".viewer");
@@ -39,6 +40,7 @@ let score = [6, 7];
 const displayScore = document.querySelectorAll(".score-section .score");
 const buttonScore = document.querySelectorAll(".control-section button");
 
+let introStatus = false;
 let scrollY = 0;
 let ticking = false;
 let needUpdate = true;
@@ -54,13 +56,30 @@ const scores = {
 
 const FIELD_HEIGHT = 2000;
 const FIELD_WIDTH = 4000;
-const animaKeyframe = [0, 500, 2000, 2500, 4500, 5500, 6500, 8500];
-const platform = () => navigator.userAgentData?.platform;
-const cursorPlatform = ["Windows", "macOS", "Linux"];
-const touchPlatform = ["Android", "iOS"];
+const platform = () => navigator.platform;
+const desktopPlatforms = [
+  "Win32",
+  "Win64",
+  "Windows",
+  "MacIntel",
+  "Linux x86_64",
+  "Linux i686",
+  "Linux",
+];
 
+const mobilePlatforms = [
+  "Android",
+  "Linux armv8l",
+  "Linux armv81",
+  "Linux aarch64",
+  "iPhone",
+  "iPad",
+  "iPod",
+];
 const pages = ["about", "products", "contacts"];
-
+const animaKeyframe = desktopPlatforms.includes(platform())
+  ? [0, 500, 2000, 2500, 4500, 6500, 7500, 8500, 9500]
+  : [0, 500, 1000, 1500, 2500, 3000, 3500, 4500, 5000];
 let loading = JSON.parse(localStorage.getItem("loading")) || false;
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -70,8 +89,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.documentElement.style.setProperty("--diagonal", `${diagonal}px`);
 
   // const lenCol = FIELD_WIDTH * 2
-  const col = 24;
-  const row = 8;
+  const plat = platform();
+  const col = desktopPlatforms.includes(plat) ? 24 : 5;
+  const row = desktopPlatforms.includes(plat) ? 8 : 5;
   const rangeDeg = 30;
   const viewerSize = 400;
 
@@ -165,6 +185,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     item.addEventListener("click", () => setScore(teamNum, playerIndex, val));
   });
 
+  if (mobilePlatforms.includes(plat))
+    floor.style.transform = `rotateX(90deg) translateZ(calc((var(--height-field) / -2) - 2px)) translateY(calc(var(--height-field) / 2))`;
+
   if (loading) setLoading();
   updateScroll();
 
@@ -184,6 +207,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     "wheel",
     (e) => {
       e.preventDefault();
+      if (!introStatus) return;
 
       scrollY += e.deltaY;
       needUpdate = true;
@@ -207,6 +231,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     "touchmove",
     (e) => {
       e.preventDefault();
+      if (!introStatus) return;
 
       const touchY = e.touches[0].clientY;
       const deltaY = lastTouchY - touchY;
@@ -220,10 +245,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
 
   window.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    // if (cursorPlatform.includes(platform()))
-    needUpdate = true;
+    if (desktopPlatforms.includes(platform())) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      needUpdate = true;
+    }
   });
 
   buttonScore.forEach((btn, index) => {
@@ -254,8 +280,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function setScore(teamNum, playerIndex, val) {
-  console.log(scores);
-  console.log(teamNum, playerIndex, val);
   const listKey = teamNum === 1 ? "t1" : "t2";
   const arrayIndex = playerIndex - 1;
 
@@ -289,7 +313,6 @@ function ease(target) {
 
 function goTo() {
   const hash = location.hash.slice(2);
-  console.log(hash);
 
   if (hash == "tentang") ease(4000);
 
@@ -299,9 +322,11 @@ function goTo() {
 async function intro() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      introContainer.style.transition = "all 1s ease-in";
-      introContainer.style.height = 0;
+      introContainer.style.transform = "translate(-50%, -50%) scale(0)";
 
+      setTimeout(() => {
+        introStatus = true;
+      }, 1000);
       resolve();
     }, 2000);
   });
@@ -316,7 +341,6 @@ function toggleNavbar(e) {
 function handleScoreMisc(negative, team) {
   team = Number(team);
 
-  console.log(team);
   if (score[team] == 0 && negative) return;
 
   score[team] += negative ? -1 : 1;
@@ -378,22 +402,25 @@ function bringToFront(clickedCard) {
 function animate() {
   let animaL;
   let animaR;
+  const isMobile = mobilePlatforms.includes(platform());
 
   const halfWidth = window.innerWidth / 2;
   const halfHeight = window.innerHeight / 2;
 
-  // if (cursorPlatform.includes(platform()) || !!platform())
-  content.style.transform = `translate(${(20 * (mouseX - halfWidth)) / halfWidth}px, ${(20 * (mouseY - halfHeight)) / halfHeight}px)`;
+  // if (desktopPlatforms.includes(platform()) || !!platform())
+  if (!isMobile)
+    content.style.transform = `translate(${(20 * (mouseX - halfWidth)) / halfWidth}px, ${(20 * (mouseY - halfHeight)) / halfHeight}px)`;
 
   const key = animaKeyframe.findIndex(
     (_, i) => scrollY >= animaKeyframe[i] && scrollY <= animaKeyframe[i + 1],
   );
+  console.log(key);
   let hideView;
 
   infoScrollContent.style.opacity = key < 1 ? 1 : 0;
   leftSection.style.opacity = scrollY < 220 ? 1 : 0;
-  topSection.children[0].style.opacity = key > 0 && scrollY < 2100 ? 1 : 0;
-  handphoneWrapper.style.opacity = key > 0 && scrollY < 2100 ? 1 : 0;
+  topSection.style.opacity = key > 0 && scrollY < (isMobile ? 1100 : 2100) ? 1 : 0;
+  handphoneWrapper.style.opacity = key > 0 && scrollY < (isMobile ? 1100 : 2100) ? 1 : 0;
   handphoneWrapper.style.pointerEvents =
     key > 0 && scrollY < 2100 ? "all" : "none";
 
@@ -440,6 +467,13 @@ function animate() {
   page.style.transform = `translateZ(calc(var(--height-field) * -5 / 10))`;
   aboutFiles[0].style.top = 0;
   aboutFiles[1].style.top = 0;
+  aboutFiles[2].style.top = 0;
+  viewer.style.display = "block";
+  field.style.display = "block";
+  floor.style.display = "block";
+  leftSection.style.display = "flex";
+  topSection.style.display = "flex";
+  aboutContainer.style.display = "none";
 
   if (key < 1) return;
 
@@ -508,27 +542,38 @@ function animate() {
   //   hideView = setTimeout(() => {
   //     viewer.style.display = "none";
   //   }, 1000);
+  aboutContainer.style.display = "block";
 
   if (key < 4) return;
 
-  aboutFiles[0].style.top = `-${animaL(window.innerHeight + 60)}px`;
+  aboutFiles[0].style.top = `-${animaL(window.innerHeight + (isMobile ? 120 : 60))}px`;
 
   if (key < 5) return;
 
-  aboutFiles[0].style.top = `-${window.innerHeight + 60}px`;
-  aboutFiles[1].style.top = `-${animaL(window.innerHeight + 60)}px`;
+  viewer.style.display = "none";
+  field.style.display = "none";
+  floor.style.display = "none";
+  leftSection.style.display = "none";
+  topSection.style.display = "none";
+  aboutFiles[0].style.top = `-${window.innerHeight + (isMobile ? 120 : 60)}px`;
+  aboutFiles[1].style.top = `-${animaL(window.innerHeight + (isMobile ? 120 : 60))}px`;
   // aboutDocum.scrollLeft = 0;
-  filmStrip[0].style.right = `-100%`
-  filmStrip[1].style.left = `-100%`
+  filmStrip[0].style.right = `-100%`;
+  filmStrip[1].style.left = `-100%`;
 
   if (key < 6) return;
 
-  aboutFiles[1].style.top = `-${window.innerHeight + 60}px`;
-  // aboutDocum.scrollLeft = animaL(
-  //   aboutDocumContainer.getBoundingClientRect().width,
-  // );
-  filmStrip[0].style.right = `-${35 + animaR(50)}%`
-  filmStrip[1].style.left = `-${35 + animaR(50)}%`
+  aboutFiles[1].style.top = `-${window.innerHeight + (isMobile ? 120 : 60)}px`;
+  filmStrip[0].style.right = `-${35 + animaR(50)}%`;
+  filmStrip[1].style.left = `-${35 + animaR(50)}%`;
+
+  if (key < 7) return;
+  filmStrip[0].style.right = `-35%`;
+  filmStrip[1].style.left = `-35%`;
+  aboutFiles[2].style.top = `-${animaL(window.innerHeight + (isMobile ? 120 : 60))}px`;
+
+  if (key < 8) return;
+  aboutFiles[2].style.top = `-${window.innerHeight + (isMobile ? 120 : 60)}px`;
 }
 
 function styleValue(
