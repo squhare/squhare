@@ -9,10 +9,21 @@ const slider = document.querySelector(".infoSlider");
 const sliderArrow = document.querySelector(".infoSliderArrow");
 const sliderBarActive = document.querySelector(".infoSliderBarActive");
 const leftSection = document.querySelector(".left-section");
+const topSection = document.querySelector(".top-section");
 const tryBtn = document.querySelector(".tryBtn");
 
-const containerAbout = document.querySelector(".containerAbout");
+const handphoneWrapper = document.querySelector(".handphoneWrapper");
+const controlBtn = document.querySelectorAll(".btn-control");
+
+const aboutContainer = document.querySelector(".aboutContainer");
 const aboutFiles = document.querySelectorAll(".aboutFile");
+const aboutDocum = document.querySelector(
+  ".aboutFile:nth-child(2)>.aboutFileContent",
+);
+const aboutDocumContainer = document.querySelector(
+  ".aboutFile:nth-child(2) .docum-container",
+);
+const filmStrip = document.querySelectorAll(".film-strip");
 
 const navbarBar = document.querySelector(".navbarBar");
 const home = document.querySelector(".navbarTop>span");
@@ -36,10 +47,14 @@ let mouseY = 0;
 let lastTouchY = 0;
 
 let diagonal = 0;
+const scores = {
+  t1: [0, 0, 0],
+  t2: [0, 0, 0],
+};
 
 const FIELD_HEIGHT = 2000;
 const FIELD_WIDTH = 4000;
-const animaKeyframe = [0, 500, 1000, 2500, 4000];
+const animaKeyframe = [0, 500, 2000, 2500, 4500, 5500, 6500, 8500];
 const platform = () => navigator.userAgentData?.platform;
 const cursorPlatform = ["Windows", "macOS", "Linux"];
 const touchPlatform = ["Android", "iOS"];
@@ -102,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       )
     `;
       svg.style.cssText = `
-      filter: brightness(${0.3 + row * 0.05 - 0.05 * (r + 1)});
+    filter: brightness(${0.3 + row * 0.05 - 0.05 * (r + 1)});
       left:${x};
       bottom:${y};
       transform:${transform};
@@ -113,7 +128,42 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   viewer.appendChild(fragment);
+
+  const fragmentFrame = document.createDocumentFragment();
+
+  for (let i = 1; i <= 12; i++) {
+    const frame = document.createElement("div");
+    frame.classList.add("film-frame");
+
+    const frameWindow = document.createElement("div");
+    frameWindow.classList.add("frame-window");
+
+    const img = document.createElement("img");
+    img.src = `./assets/roll${i}.jpeg`;
+    img.classList.add("frame-roll");
+
+    frameWindow.appendChild(img);
+    frame.appendChild(frameWindow);
+
+    fragmentFrame.appendChild(frame);
+  }
+
+  const frames = [...fragmentFrame.children];
+  const middle = Math.floor(frames.length / 2);
+
+  filmStrip[0].append(...frames.slice(0, middle));
+  filmStrip[1].append(...frames.slice(middle));
   //? setup end
+
+  controlBtn.forEach((item, index, arr) => {
+    const player = parseInt(arr.length / 2);
+    const teamNum = index < player ? 1 : 2;
+    const playerIndex = Math.ceil(
+      Math.ceil((index + 1) / 2) % ((player + 1) / 2),
+    );
+    const val = index % 2 == 0 ? -1 : 1;
+    item.addEventListener("click", () => setScore(teamNum, playerIndex, val));
+  });
 
   if (loading) setLoading();
   updateScroll();
@@ -141,6 +191,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     },
     { passive: false },
   );
+  handphoneWrapper.addEventListener("wheel", (e) => {
+    e.stopPropagation();
+  });
 
   window.addEventListener(
     "touchstart",
@@ -181,7 +234,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   [...navbarPage.children].forEach((btn, index) => {
     btn.addEventListener("click", () => {
       location.hash = `/${btn.innerText.toLowerCase()}`;
-      goTo()
+      goTo();
     });
   });
   home.addEventListener("click", () => {
@@ -199,6 +252,36 @@ document.addEventListener("DOMContentLoaded", async () => {
   await intro();
   if (location.hash.length > 0) goTo();
 });
+
+function setScore(teamNum, playerIndex, val) {
+  console.log(scores);
+  console.log(teamNum, playerIndex, val);
+  const listKey = teamNum === 1 ? "t1" : "t2";
+  const arrayIndex = playerIndex - 1;
+
+  if (scores[listKey][arrayIndex] + val < 0) {
+    return;
+  }
+
+  scores[listKey][arrayIndex] += val;
+
+  document.getElementById(`t${teamNum}-p${playerIndex}-score`).textContent =
+    scores[listKey][arrayIndex];
+
+  // Hitung total akhir
+  sumScore();
+}
+sumScore();
+
+function sumScore() {
+  const totalT1 = scores.t1.reduce((sum, curr) => sum + curr, 0);
+  const totalT2 = scores.t2.reduce((sum, curr) => sum + curr, 0);
+
+  document.getElementById("t1-total").textContent = totalT1;
+  document.getElementById("t2-total").textContent = totalT2;
+  displayScore[0].textContent = totalT1;
+  displayScore[1].textContent = totalT2;
+}
 
 function ease(target) {
   scrollY += (target - scrollY) * 0.1;
@@ -220,7 +303,7 @@ async function intro() {
       introContainer.style.height = 0;
 
       resolve();
-    }, 1000);
+    }, 2000);
   });
 }
 
@@ -274,6 +357,24 @@ function toggleLoading() {
   });
 }
 
+function bringToFront(clickedCard) {
+  if (clickedCard.classList.contains("pos-front")) return;
+
+  const currentFront = document.querySelector(".pos-front");
+  const currentMiddle = document.querySelector(".pos-middle");
+  const currentBack = document.querySelector(".pos-back");
+
+  if (clickedCard === currentMiddle) {
+    currentMiddle.className = "deck-card pos-front";
+    currentFront.className = "deck-card pos-back";
+    currentBack.className = "deck-card pos-middle";
+  } else if (clickedCard === currentBack) {
+    currentBack.className = "deck-card pos-front";
+    currentFront.className = "deck-card pos-middle";
+    currentMiddle.className = "deck-card pos-back";
+  }
+}
+
 function animate() {
   let animaL;
   let animaR;
@@ -290,35 +391,43 @@ function animate() {
   let hideView;
 
   infoScrollContent.style.opacity = key < 1 ? 1 : 0;
-  leftSection.style.opacity = key < 1 ? 1 : 0;
+  leftSection.style.opacity = scrollY < 220 ? 1 : 0;
+  topSection.children[0].style.opacity = key > 0 && scrollY < 2100 ? 1 : 0;
+  handphoneWrapper.style.opacity = key > 0 && scrollY < 2100 ? 1 : 0;
+  handphoneWrapper.style.pointerEvents =
+    key > 0 && scrollY < 2100 ? "all" : "none";
 
   animaL = (target) =>
     linear(target, animaKeyframe[key], animaKeyframe[key + 1]);
   animaR = (start) =>
     reverseLinear(start, animaKeyframe[key], animaKeyframe[key + 1]);
-  
-  slider.style.opacity = key == 2 ? 1 : 0;
+
+  slider.style.opacity = key == 3 ? 1 : 0;
   sliderArrow.style.top =
-  key >= 2 && key <= 3 ? (key == 3 ? "100%" : `${animaL(100)}%`) : 0;
+    key >= 3 && key <= 4 ? (key == 4 ? "100%" : `${animaL(100)}%`) : 0;
   sliderBarActive.style.height =
-    key >= 2 && key <= 3 ? (key == 3 ? "100%" : `${animaL(100)}%`) : 0;
-    
-    fieldWrapper.style.transform = `translateZ(
+    key >= 3 && key <= 4 ? (key == 4 ? "100%" : `${animaL(100)}%`) : 0;
+
+  fieldWrapper.style.transform = `translateZ(
       ${styleValue(45, animaL, {
         baseValue: 25,
-      divider: 100,
-      negative: true,
-    })}
+        divider: 100,
+        negative: true,
+      })}
   )
-  rotateX(-2deg)
+  rotateX(${styleValue(12, animaL, {
+    baseValue: -2,
+    isDivide: false,
+    unit: "deg",
+  })})
   rotateY(
     ${styleValue(20, animaR, {
       isDivide: false,
       unit: "deg",
     })}
     )
-    translateX(
-      ${styleValue(13, animaR)}
+  translateX(
+    ${styleValue(13, animaR)}
   )
   translateY(
     ${styleValue(3, animaR, {
@@ -329,10 +438,26 @@ function animate() {
   translateZ(calc(var(--height-field) / -2)) 
   translateY(calc(var(--height-field) * 0 / 10))`;
   page.style.transform = `translateZ(calc(var(--height-field) * -5 / 10))`;
-  aboutFiles[0].style.top = 0
-  
+  aboutFiles[0].style.top = 0;
+  aboutFiles[1].style.top = 0;
+
   if (key < 1) return;
-  
+
+  fieldWrapper.style.transform = `translateZ(-1400px)
+  rotateX(10deg)
+  rotateY(0)
+  translateX(0)
+  translateY(0)`;
+  field.style.transform = `rotateX(90deg) 
+  translateZ(
+      ${FIELD_HEIGHT / -2}px
+  ) 
+  translateY(calc(var(--height-field) * 0 / 10))`;
+  page.style.transform = `translateZ(calc(var(--height-field) * -5 / 10))`;
+  hero.style.borderColor = "rgba(255, 255, 255, 0.1)";
+
+  if (key < 2) return;
+
   fieldWrapper.style.transform = `
   translateZ(
   ${styleValue(70, animaR, {
@@ -340,7 +465,7 @@ function animate() {
     divider: 100,
   })}
   ) 
-  rotateX(-${animaR(2)}deg) 
+  rotateX(${animaR(10)}deg) 
   rotateY(0deg) 
   translateX(0px) 
   translateY(0px)`;
@@ -357,16 +482,12 @@ function animate() {
     })}
   )`;
   hero.style.borderColor = "rgba(255, 255, 255, 0.1)";
-  //   if (getComputedStyle(viewer).display == "none" && key == 1) {
-  //     viewer.style.display = "flex";
-  //     if (hideView) clearTimeout(hideView);
-  //   }
-  // console.log(getComputedStyle(viewer).display, key)
 
-  if (key < 2) return;
+  if (key < 3) return;
 
   //JEDA 1 FRAME
   fieldWrapper.style.transform = `
+  translateZ(0px)
   rotateX(0deg) 
   rotateY(0deg) 
   translateX(0px) 
@@ -388,9 +509,26 @@ function animate() {
   //     viewer.style.display = "none";
   //   }, 1000);
 
-  if (key < 3) return;
+  if (key < 4) return;
 
-  aboutFiles[0].style.top = `-${animaL(window.innerHeight + 60)}px`
+  aboutFiles[0].style.top = `-${animaL(window.innerHeight + 60)}px`;
+
+  if (key < 5) return;
+
+  aboutFiles[0].style.top = `-${window.innerHeight + 60}px`;
+  aboutFiles[1].style.top = `-${animaL(window.innerHeight + 60)}px`;
+  // aboutDocum.scrollLeft = 0;
+  filmStrip[0].style.right = `-100%`
+  filmStrip[1].style.left = `-100%`
+
+  if (key < 6) return;
+
+  aboutFiles[1].style.top = `-${window.innerHeight + 60}px`;
+  // aboutDocum.scrollLeft = animaL(
+  //   aboutDocumContainer.getBoundingClientRect().width,
+  // );
+  filmStrip[0].style.right = `-${35 + animaR(50)}%`
+  filmStrip[1].style.left = `-${35 + animaR(50)}%`
 }
 
 function styleValue(

@@ -217,19 +217,15 @@
 
                     <div class="control-section">
                       <div class="control-group">
-                        <button>-</button>
 
-                        <span>POINT</span>
+                        <span>SCORE</span>
 
-                        <button>+</button>
                       </div>
 
                       <div class="control-group">
-                        <button>-</button>
 
-                        <span>POINT</span>
+                        <span>SCORE</span>
 
-                        <button>+</button>
                       </div>
                     </div>
                   </div>
@@ -244,29 +240,36 @@
 
     </div>
   </div>
-  <div class="containerAbout">
-    <div class="aboutFile">
-      <div class="aboutFileHeader"></div>
-      <div class="aboutFileContent"></div>
-    </div>
-  </div>
 
   <div class="left-section">
     <div class="content-group">
       <h1>
-        Digital Scoring yang<br />
-        modern dan profesional
+        Buat Pertandingan Terlihat <br />
+        Lebih Profesional
       </h1>
 
       <p>
-        Dibuat khusus untuk mempermudah kompetisi
+        Kami hadir untuk membantu Anda bekerja lebih cepat <br>
+        dan lebih modern.
       </p>
     </div>
 
-    <div class="content-group">
+    <div class="content-group" style="display: none;">
       <p>Ingin mencoba Digital Scoring kami?</p>
 
       <button class="btn tryBtn">Klik di sini!</button>
+    </div>
+  </div>
+
+  <div class="top-section">
+    <div class="content-group">
+      <h1>
+        Ubah Skor dalam Sekejap
+      </h1>
+
+      <p>
+        Setiap perubahan skor langsung tampil secara realtime untuk pemain dan penonton.
+      </p>
     </div>
   </div>
 
@@ -274,23 +277,6 @@
     <div id="scroll">
     </div>
   </div>
-  <nav class="navbar">
-    <div class="navbarWrapper">
-      <div class="navbarTop">
-        <span>Squhare</span>
-        <div class="navbarBar">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-      </div>
-      <div class="navbarPage">
-        <span>Tentang</span>
-        <span>Layanan</span>
-        <span>Kontak</span>
-      </div>
-    </div>
-  </nav>
   <div class="loadingWrapper">
     <div class="loading-back"></div>
     <div class="loading-front"></div>
@@ -305,16 +291,308 @@
 
       <div class="infoSliderBar"></div>
       <div class="infoSliderBarActive"></div>
-      <img class="infoSliderArrow" src="./asset/slider-arrow.svg" width="10" />
+      <img class="infoSliderArrow" src="./assets/slider-arrow.svg" width="10" />
     </div>
   </div>
-  <div class="introContainer">
-    <div class="introContent">
-      <div class="introText">
-        <div>SQUHARE</div>
-        <div>DIGITAL - SCORING</div>
-        <div></div>
+  <div class="fixedContainer">
+
+    <div class="aboutContainer">
+      <div class="aboutFile">
+        <div class="aboutFileHeader"></div>
+        <div class="aboutFileContent">
+          <div class="deck-container">
+            <div class="deck-card pos-front" id="card-1" onclick="bringToFront(this)">
+              <!-- Header Kartu -->
+              <div class="card-header">
+                <span class="card-code">0505C5</span>
+                <div class="status-badge-container">
+                  <div class="status-badge status-active">
+                    <span class="status-dot"></span>
+                    ACTIVE
+                  </div>
+                  <span class="round-badge">ROUND 1</span>
+                </div>
+              </div>
+              <!-- Row Benda Alam 1 -->
+              <div class="school-row">
+                <input type="text" value="SMK GUNUNG KOKOH" class="school-input" onclick="event.stopPropagation()">
+                <div class="score-box" id="score-c1-s1" onclick="tambahSkor(event, 'score-c1-s1')">0</div>
+              </div>
+              <!-- Row Benda Alam 2 -->
+              <div class="school-row">
+                <input type="text" value="SMA SAMUDRA LUAS" class="school-input" onclick="event.stopPropagation()">
+                <div class="score-box" id="score-c1-s2" onclick="tambahSkor(event, 'score-c1-s2')">0</div>
+              </div>
+              <!-- Baris Tombol Atas -->
+              <div class="btn-row" onclick="event.stopPropagation()">
+              </div>
+              <!-- Baris Tombol Bawah -->
+              <div class="btn-row" onclick="event.stopPropagation()">
+              </div>
+            </div>
+
+            <!-- KARTU 2 (Tengah - Tengah saat awal) -->
+            <div class="deck-card pos-middle" id="card-2" onclick="bringToFront(this)">
+              <!-- Header Kartu -->
+              <div class="card-header">
+                <span class="card-code">97E725</span>
+                <div class="status-badge-container">
+                  <div class="status-badge status-pause">
+                    <span class="status-dot"></span>
+                    PAUSE
+                  </div>
+                  <span class="round-badge">ROUND 2</span>
+                </div>
+              </div>
+              <!-- Row Benda Alam 1 -->
+              <div class="school-row">
+                <input type="text" value="SMK ANGIN TENANG" class="school-input" onclick="event.stopPropagation()">
+                <div class="score-box" id="score-c2-s1" onclick="tambahSkor(event, 'score-c2-s1')">0</div>
+              </div>
+              <!-- Row Benda Alam 2 -->
+              <div class="school-row">
+                <input type="text" value="SMA API MEMBARA" class="school-input" onclick="event.stopPropagation()">
+                <div class="score-box" id="score-c2-s2" onclick="tambahSkor(event, 'score-c2-s2')">0</div>
+              </div>
+              <!-- Baris Tombol Atas -->
+              <div class="btn-row" onclick="event.stopPropagation()">
+              </div>
+              <!-- Baris Tombol Bawah -->
+              <div class="btn-row" onclick="event.stopPropagation()">
+              </div>
+            </div>
+
+            <!-- KARTU 3 (Paling Belakang - Atas Kanan saat awal) -->
+            <div class="deck-card pos-back" id="card-3" onclick="bringToFront(this)">
+              <!-- Header Kartu -->
+              <div class="card-header">
+                <span class="card-code">88F4A1</span>
+                <div class="status-badge-container">
+                  <div class="status-badge status-unactive">
+                    <span class="status-dot"></span>
+                    UNACTIVE
+                  </div>
+                  <span class="round-badge">ROUND 3</span>
+                </div>
+              </div>
+              <!-- Row Benda Alam 1 -->
+              <div class="school-row">
+                <div>SMK BATU ABADI</div>
+                <div class="score-box" id="score-c3-s1" onclick="tambahSkor(event, 'score-c3-s1')">2</div>
+              </div>
+              <!-- Row Benda Alam 2 -->
+              <div class="school-row">
+                <div>SMK BATU ABADI</div>
+                <div class="score-box" id="score-c3-s2" onclick="tambahSkor(event, 'score-c3-s2')">1</div>
+              </div>
+              <!-- Baris Tombol Atas -->
+              <div class="btn-row" onclick="event.stopPropagation()">
+              </div>
+              <!-- Baris Tombol Bawah -->
+              <div class="btn-row" onclick="event.stopPropagation()">
+              </div>
+            </div>
+
+          </div>
+          <div class="right-section">
+            <div class="content-group">
+              <h1>
+                Setiap Pertandingan Punya Cerita
+              </h1>
+
+              <p>
+                Lihat kembali perjalanan skor dan hasil pertandingan kapan saja.
+              </p>
+            </div>
+
+            <div class="content-group" style="display: none;">
+              <p>Ingin mencoba Digital Scoring kami?</p>
+
+              <button class="btn tryBtn">Klik di sini!</button>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="aboutFile">
+        <div class="aboutFileHeader"></div>
+        <div class="aboutFileContent">
+          <div class="docum-container">
+            <div class="title-section">
+              <div class="content-group">
+                <h1>
+                  Digunakan dalam Berbagai Pertandingan
+                </h1>
+
+                <p>
+                  Telah membantu penyelenggara kompetisi dalam mengelola pertandingan
+                  secara lebih modern.
+                </p>
+              </div>
+            </div>
+            <div class="filmContainer">
+
+              <div class="filmWrapper">
+                <div class="film-strip"></div>
+                <div class="film-strip"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="introContainer">
+      <div class="introContent">
+        <div class="introText">
+          <div>SQUHARE</div>
+          <div>DIGITAL - SCORING</div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="navbarWrapper">
+        <div class="navbarTop">
+          <span>Squhare</span>
+          <div class="navbarBar">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+        <div class="navbarPage">
+          <span>Tentang</span>
+          <span>Layanan</span>
+          <span>Kontak</span>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="handphoneWrapper">
+    <div class="handphoneContent">
+      <div class="handphoneHeader">
+        <div class="status-bar">
+          <!-- Sisi Kiri (Jam Real-time) -->
+          <div class="status-bar-left">
+            <span id="live-clock">00:00</span>
+          </div>
+
+          <div class="camera">
+          </div>
+
+          <!-- Sisi Kanan (Koneksi & Daya) -->
+          <div class="status-bar-right">
+            <img src="./assets/wifi.svg" alt="">
+            <img src="./assets/signal.svg" alt="">
+
+            <div class="battery">
+              <div class="battery-level"></div>
+            </div>
+            <span style="font-size: 0.7rem; font-family: sans-serif; letter-spacing: -0.3px;">78%</span>
+          </div>
+        </div>
+
+      </div>
+      <main class="mobile-container">
+        <section class="card">
+          <div class="card-header">
+            Team 1
+          </div>
+
+          <div class="player-list">
+            <div class="player-row">
+              <div class="player-label-box">
+                <input type="text" value="Pemain 01" class="player-label-input">
+              </div>
+              <div class="score-control-box">
+                <button class="btn-control btn-minus">-</button>
+                <span id="t1-p1-score" class="score-display">0</span>
+                <button class="btn-control btn-plus">+</button>
+              </div>
+            </div>
+
+            <div class="player-row">
+              <div class="player-label-box">
+                <input type="text" value="Pemain 02" class="player-label-input">
+              </div>
+              <div class="score-control-box">
+                <button class="btn-control btn-minus">-</button>
+                <span id="t1-p2-score" class="score-display">0</span>
+                <button class="btn-control btn-plus">+</button>
+              </div>
+            </div>
+
+            <div class="player-row">
+              <div class="player-label-box">
+                <input type="text" value="Pemain 03" class="player-label-input">
+              </div>
+              <div class="score-control-box">
+                <button class="btn-control btn-minus">-</button>
+                <span id="t1-p3-score" class="score-display">0</span>
+                <button class="btn-control btn-plus">+</button>
+              </div>
+            </div>
+
+            <div class="total-row">
+              <div class="total-label-box">
+                TOTAL
+              </div>
+              <div class="total-score-box">
+                <span id="t1-total">0</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            Team 2
+          </div>
+
+          <div class="player-list">
+            <div class="player-row">
+              <div class="player-label-box">
+                <input type="text" value="Pemain 01" class="player-label-input">
+              </div>
+              <div class="score-control-box">
+                <button class="btn-control btn-minus">-</button>
+                <span id="t2-p1-score" class="score-display">0</span>
+                <button class="btn-control btn-plus">+</button>
+              </div>
+            </div>
+
+            <div class="player-row">
+              <div class="player-label-box">
+                <input type="text" value="Pemain 02" class="player-label-input">
+              </div>
+              <div class="score-control-box">
+                <button class="btn-control btn-minus">-</button>
+                <span id="t2-p2-score" class="score-display">0</span>
+                <button class="btn-control btn-plus">+</button>
+              </div>
+            </div>
+
+            <div class="player-row">
+              <div class="player-label-box">
+                <input type="text" value="Pemain 03" class="player-label-input">
+              </div>
+              <div class="score-control-box">
+                <button class="btn-control btn-minus">-</button>
+                <span id="t2-p3-score" class="score-display">0</span>
+                <button class="btn-control btn-plus">+</button>
+              </div>
+            </div>
+
+            <div class="total-row">
+              <div class="total-label-box">
+                TOTAL
+              </div>
+              <div class="total-score-box">
+                <span id="t2-total">0</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
   </div>
