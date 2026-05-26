@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./about.css" />
+  </head>
+  <body>
+    <div class="scroll-container">
+      <div class="horizontal">
+        <main id="about">
+          <section class="about-hero">
+            <div class="container-fluid about-hero-content">
+              <img
+                src="./assets/squhare-transparent.png"
+                alt=""
+                class="about-hero-logo"
+              />
+              <span class="about-hero-bio">
+                GAME ON.<br />
+                SCORE DONE.
+              </span>
+            </div>
+            <img
+              src="./assets/squhare-text-down.svg"
+              alt="SQUHARE"
+              class="about-hero-squhare"
+            />
+            <!-- section yang pertama muncul -->
+          </section>
+
+          <div id="about-who-we-are">
+            <p>
+              Kami adalah tim pengembang digital scoring yang berawal dari
+              lingkungan sekolah dan berkembang melalui berbagai proyek
+              pertandingan olahraga nyata. Berawal dari sebuah proyek sederhana,
+              kami terus mengembangkan sistem scoring yang lebih modern,
+              realtime, dan mudah digunakan untuk berbagai kebutuhan kompetisi
+              olahraga.
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- <div id="about-what-we-do">
+      <p>
+        Kami menyediakan layanan digital scoring untuk berbagai pertandingan
+        olahraga.
+      </p>
+    </div>
+
+    <section class="about-section-2">
+      <div class="container-fluid">
+        <p class="text-center">
+          Kami menyediakan layanan digital scoring untuk berbagai pertandingan
+          olahraga.
+        </p>
+        <div class="card-grid">
+          <div class="card">
+            <h3 class="card-heading">Digital Scoring</h3>
+            <p>Sistem scoring digital untuk berbagai pertandingan olahraga.</p>
+          </div>
+          <div class="card">
+            <h3 class="card-heading">Realtime Display</h3>
+            <p>
+              Perubahan skor langsung tampil secara realtime untuk pemain dan
+              penonton.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card-heading">Match History</h3>
+            <p>Menyimpan hasil dan riwayat pertandingan dengan rapi.</p>
+          </div>
+          <div class="card">
+            <h3 class="card-heading">Custom Scoring</h3>
+            <p>Dapat dikembangkan sesuai kebutuhan cabang olahraga.</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <script>
+      const whoWeAre = document.querySelector("#about-who-we-are");
+      const about = document.querySelector("#about");
+      const scrollContainer = document.querySelector(".scroll-container");
+
+      window.addEventListener("scroll", () => {
+        console.log(window.pageYOffset);
+        // const scrollTop = window.pageYOffset;
+        // const maxScroll = scrollContainer.offsetHeight - window.innerHeight;
+
+        // const scrollFraction = scrollTop / maxScroll;
+
+        // const maxTranslate = about.clientWidth - window.innerWidth;
+        // const translateX = scrollFraction * maxTranslate;
+
+        const scrollTop = window.pageYOffset;
+        const inSection = scrollTop / window.innerHeight;
+        const translateX = inSection * window.innerWidth;
+
+        if (inSection > 0.5 && inSection < 1.5) {
+          whoWeAre.style.opacity = 1;
+        } else {
+          whoWeAre.style.opacity = 0;
+        }
+
+        // if (inSection > 1 && inSection < 2) {
+        //   whoWeAre.style.opacity = 1;
+        // } else {
+        //   whoWeAre.style.opacity = 0;
+        // }
+
+        // if (inSection > 2 && inSection < 3) {
+        //   document.body.style.backgroundColor = "#235941";
+        // } else {
+        //   document.body.style.backgroundColor = "#00ff8c";
+        // }
+
+        about.style.transform = `translateX(-${translateX}px)`;
+      });
+    </script>
+  </body>
+</html>

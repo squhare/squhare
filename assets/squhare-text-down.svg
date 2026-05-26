@@ -1,0 +1,78 @@
+<svg viewBox="10 10 690 260" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wave {
+      fill: #00ff8c;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .p1 { animation-delay: 0s; }
+    .p2 { animation-delay: 0.15s; }
+    .p3 { animation-delay: 0.3s; }
+    .p4 { animation-delay: 0.45s; }
+    .p5 { animation-delay: 0.6s; }
+    .p6 { animation-delay: 0.75s; }
+    .p7 { animation-delay: 0.9s; }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(20px);
+      }
+    }
+  </style>
+
+
+  <polygon class="wave p1"
+    points="10,10 100,10 100,90 60,90 60,30 50,30 50,100 
+    100,100 100,270 10,270 10,130 60,130 60,120 10,120" 
+    style="fill:#00ff8c" />
+
+  <polygon points="10,150 120,150 120,270 10,270" 
+    style="fill:#00ff8c" />
+
+  <polygon class="wave p2"
+    points="110,30 200,30 200,140 180,140 180,150 200,150 
+    200,270 150,270 150,150 160,150 160,50 150,50 150,270 110,270"
+    style="fill:#00ff8c" />
+
+  <polygon points="110,170 220,170 220,270 110,270" 
+    style="fill:#00ff8c" />
+
+  <polygon class="wave p3"
+    points="210,50 250,50 250,170 260,170 260,50 300,50 
+    300,270 210,270" style="fill:#00ff8c" />
+
+  <polygon points="210,190 320,190 320,270 210,270" 
+    style="fill:#00ff8c" />
+
+  <polygon class="wave p4"
+    points="310,70 350,70 350,130 360,130 360,70 400,70 
+    400,270 360,270 360,150 350,150 350,270 310,270" 
+    style="fill:#00ff8c" />
+
+  <polygon points="310,210 420,210 420,270 310,270" 
+    style="fill:#00ff8c" />
+
+  <polygon class="wave p5"
+    points="410,90 500,90 500,270 410,270 410,150 450,150 
+    450,210 460,210 460,170 450,170 450,150 460,150 460,110 450,110
+    450,140 410,140" style="fill:#00ff8c" />
+
+  <polygon points="410,230 520,230 520,270 410,270" 
+    style="fill:#00ff8c" />
+
+  <polygon class="wave p6"
+    points="510,110 600,110 600,190 580,190 580,200 600,200
+    600,270 560,270 560,190 550,190 550,170 560,170 560,130 550,130 
+    550,270 510,270" style="fill:#00ff8c" />
+
+  <polygon points="510,250 620,250 620,270 510,270" 
+    style="fill:#00ff8c" />
+
+  <polygon class="wave p7"
+    points="610,130 700,130 700,210 650,210 650,190 660,190 
+    660,150 650,150 650,250 660,250 660,220 700,220 700,270
+    610,270" style="fill:#00ff8c" />
+</svg>
