@@ -33,11 +33,10 @@
   align-items: center;
 }
 
-.navbarTop>span {
+.navbarTop > span {
   font-weight: bold;
   cursor: pointer;
 }
-
 
 .navbarBar {
   height: 19px;
@@ -90,7 +89,6 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-
 .navbarPage {
   height: 100%;
   display: flex;
@@ -99,7 +97,7 @@
   transition: all 0.3s ease;
 }
 
-.navbarPage>span {
+.navbarPage > span {
   height: fit-content;
   font-size: 1rem;
   display: flex;
@@ -117,7 +115,7 @@
   transition: all 0.3s ease;
 }
 
-.navbarPage>span:hover {
+.navbarPage > span:hover {
   letter-spacing: 1px;
   border-radius: 40px;
   font-weight: bold;
@@ -152,14 +150,14 @@
     gap: 0;
   }
 
-  .navbarPage>* {
+  .navbarPage > * {
     height: fit-content !important;
     flex: 1;
     justify-content: center;
     padding: 0 !important;
   }
 
-  .navbarPage>*:hover {
+  .navbarPage > *:hover {
     margin: 0 !important;
     letter-spacing: 0 !important;
   }
