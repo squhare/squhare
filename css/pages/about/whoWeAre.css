@@ -1,0 +1,35 @@
+#about-who-we-are {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: 0.5s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#about-who-we-are > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#awwa-heading {
+  color: var(--grass);
+  font-family: "Oswald";
+  font-size: 3rem;
+  width: 0ch;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: 1s ease-out;
+}
+
+#awwa-desc {
+  position: sticky;
+  left: 0;
+  width: 80vw;
+  max-width: 1080px;
+  font-size: 1.618rem;
+  text-align: justify;
+  color: #235941;
+}

@@ -1,0 +1,71 @@
+#about-hero {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: #235941;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+#about-hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#about-hero-logo {
+  width: 50vh;
+  height: 50vh;
+  transition: 0.5s ease-out;
+}
+
+#about-hero-logo:hover {
+  width: 51vh;
+  height: 51vh;
+}
+
+#about-hero-bio {
+  color: var(--mint);
+  font-family: "Oswald";
+  font-weight: 900;
+  font-size: 10vh;
+}
+
+#about-hero-desc {
+  position: relative;
+}
+
+#about-hero-desc > p {
+  font-size: 1.618rem;
+  text-align: center;
+  color: var(--mint);
+}
+
+#about-hero-desc-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--squhare);
+  transition: 0.5s ease-out;
+}
+
+#about-hero-squhare {
+  width: 100vh;
+  position: absolute;
+  right: -35vh;
+  transform: rotateZ(-90deg);
+}
+
+#about-hero-erahuqs {
+  width: 100vh;
+  position: absolute;
+  left: -35vh;
+  transform: rotateZ(90deg);
+}
