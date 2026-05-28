@@ -1,0 +1,41 @@
+@import url("../../base/template.css");
+@import url("./hero.css");
+@import url("./whoWeAre.css");
+@import url("./whatWeDo.css");
+@import url("./history1.css");
+@import url("./history2.css");
+
+body {
+  background-color: #00ff8c;
+  overflow-x: hidden;
+  transition: 0.5s ease-in-out;
+}
+
+.scroll-container {
+  height: 1300vh;
+  position: relative;
+}
+
+.horizontal {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main#about {
+  display: flex;
+  height: 100vh;
+  width: 1300vw;
+  will-change: transform;
+  position: relative;
+}
+
+.about-text-accent {
+  color: var(--sunshine) !important;
+}
+
+section {
+  width: 100vw;
+  height: 100vh;
+}

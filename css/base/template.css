@@ -1,0 +1,73 @@
+@import url("./variables.css");
+@import url("./fonts.css");
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: "Inter", sans-serif;
+  background-color: var(--cloud);
+  color: var(--grass);
+}
+
+/* Media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form elements inherit font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove button styles */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove link underline */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
