@@ -314,7 +314,8 @@ function ease(target) {
 function goTo() {
   const hash = location.hash.slice(2);
 
-  if (hash == "tentang") ease(4000);
+  if (hash == "tentang") window.location.href = 'about.html';
+  if (hash == "layanan") window.location.href = 'services.html';
 
   if (pages.includes(hash)) needUpdate = true;
 }
@@ -322,10 +323,11 @@ function goTo() {
 async function intro() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      introContainer.style.transform = "translate(-50%, -50%) scale(0)";
+      introContainer.style.top = "100vh";
 
       setTimeout(() => {
         introStatus = true;
+        introContainer.style.display = 'none'
       }, 1000);
       resolve();
     }, 2000);
@@ -414,7 +416,6 @@ function animate() {
   const key = animaKeyframe.findIndex(
     (_, i) => scrollY >= animaKeyframe[i] && scrollY <= animaKeyframe[i + 1],
   );
-  console.log(key);
   let hideView;
 
   infoScrollContent.style.opacity = key < 1 ? 1 : 0;
