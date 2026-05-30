@@ -41,7 +41,6 @@
 }
 
 #about-hero-desc > p {
-  font-size: 1.618rem;
   text-align: center;
   color: var(--mint);
 }
@@ -68,4 +67,39 @@
   position: absolute;
   left: -35vh;
   transform: rotateZ(90deg);
+}
+
+@media (max-width: 1023px) {
+  #about-hero-logo {
+    width: 30vh;
+    height: 30vh;
+    transition: 0.5s ease-out;
+  }
+
+  #about-hero-logo:hover {
+    width: 40vh;
+    height: 40vh;
+  }
+
+  #about-hero-bio {
+    font-size: 5vh;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  #about-hero-squhare {
+    width: 100vw;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: rotateZ(0deg);
+  }
+
+  #about-hero-erahuqs {
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateZ(180deg);
+  }
 }

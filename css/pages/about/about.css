@@ -45,7 +45,30 @@ main#about {
   color: var(--sunshine) !important;
 }
 
-section {
-  width: 100vw;
-  height: 100vh;
+em,
+strong {
+  font-family: inherit;
+}
+
+@media (max-width: 1023px) {
+  .scroll-container {
+    height: fit-content;
+    position: relative;
+  }
+
+  .horizontal {
+    position: static;
+    height: fit-content;
+    overflow: visible;
+  }
+
+  main#about {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100vw;
+    overflow-x: hidden;
+    will-change: transform;
+    position: relative;
+  }
 }

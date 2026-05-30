@@ -58,3 +58,23 @@
   text-align: start;
   flex: 1;
 }
+
+@media (max-width: 1023px) {
+  #about-history-10 > div {
+    padding-left: 36px;
+    justify-content: start;
+  }
+
+  #ah10-heading {
+    height: fit-content;
+    font-size: 1.618rem;
+    text-align: start;
+    flex: none;
+  }
+
+  #ah10-desc {
+    padding-top: 0;
+    flex-direction: column;
+    flex: none;
+  }
+}

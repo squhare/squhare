@@ -49,10 +49,6 @@
   font-family: "Inter";
 }
 
-em {
-  font-family: inherit;
-}
-
 #ah2-cite {
   text-align: center;
   color: var(--sunshine);
@@ -96,4 +92,41 @@ em {
   height: 125vh;
   filter: grayscale(100);
   transition: 0.5s ease-in-out;
+}
+
+@media (max-width: 1023px) {
+  #about-history-2 > div {
+    justify-content: start;
+    gap: 2rem;
+  }
+
+  #ah2-heading {
+    font-size: 1.618rem;
+    max-width: 100vw;
+    height: 5rem;
+    white-space: break-spaces;
+  }
+
+  #ah2-quote {
+    padding-block: 1rem;
+    padding-inline: 1rem;
+  }
+
+  #ah2-q {
+    font-size: 2rem;
+  }
+
+  #ah2-cite {
+    font-size: 0.5rem;
+  }
+
+  #ah2-cat1 {
+    height: 90vh;
+    z-index: -10;
+  }
+
+  #ah2-cat2 {
+    height: 100vh;
+    z-index: -10;
+  }
 }

@@ -54,7 +54,6 @@
   height: fit-content;
   align-self: center;
   transition: 0.5s ease-out;
-  transition-delay: 0.5s;
   opacity: 0;
 }
 
@@ -73,7 +72,6 @@
   top: 0;
   left: 0;
   transition: 0.5s ease-in-out;
-  transition-delay: 1s;
 }
 
 #ah8-desc-1 {
@@ -106,17 +104,38 @@
   flex: 1;
 }
 
-#ah8-bg {
-  background-image: url("../../../assets/images/roll4.jpeg");
-  background-size: cover;
-  background-position: center;
-  filter: grayscale(100);
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -10;
-  opacity: 0.3;
-  transition: 1s ease-in-out;
+@media (max-width: 1023px) {
+  #about-history-8 > div {
+    justify-content: start;
+    gap: 2rem;
+  }
+
+  #ah8-heading {
+    height: fit-content;
+    font-size: 1.618rem;
+  }
+
+  #ah8-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 2rem;
+  }
+
+  #ah8-desc > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  #ah8-quote {
+    padding-block: 1rem;
+    padding-inline: 1rem;
+  }
+
+  #ah8-q {
+    font-size: 1.618rem;
+  }
 }

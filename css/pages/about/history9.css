@@ -87,3 +87,29 @@
   transition: 1s;
   z-index: -10;
 }
+
+@media (max-width: 1023px) {
+  #about-history-9 > div {
+    justify-content: start;
+    gap: 2rem;
+  }
+
+  #ah9-heading {
+    height: fit-content;
+    font-size: 1.618rem;
+  }
+
+  #ah9-q {
+    font-size: 1.618rem;
+  }
+
+  #ah9-desc {
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  #ah9-line {
+    left: -65vw;
+    transform: rotate(90deg) scale(3);
+  }
+}

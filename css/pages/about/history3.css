@@ -127,3 +127,34 @@
   color: var(--squhare);
   font-size: 8vh;
 }
+
+@media (max-width: 1023px) {
+  #ah3-heading {
+    font-size: 1.618rem;
+    white-space: break-spaces;
+    max-width: 100vw;
+    text-align: end;
+    height: 8rem;
+    align-self: flex-end;
+  }
+
+  #ah3-desc {
+    flex: 1;
+    justify-content: start;
+    gap: 2rem;
+  }
+
+  #ah3-desc > div {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  #ah3-display {
+    right: -40vw;
+  }
+
+  #ah3-mintson {
+    text-align: start;
+    padding-left: 1rem;
+  }
+}

@@ -90,3 +90,29 @@
   opacity: 0;
   transition: 1s ease-in-out;
 }
+
+@media (max-width: 1023px) {
+  #about-history-7 > div {
+    flex-direction: column;
+    justify-content: start;
+    gap: 2rem;
+  }
+
+  #ah7-heading {
+    flex: none;
+    height: fit-content;
+    font-size: 1.618rem;
+  }
+
+  #ah7-desc-1 {
+    flex: none;
+  }
+
+  #ah7-desc-2 {
+    flex: none;
+  }
+
+  #ah7-desc-3 {
+    flex: none;
+  }
+}

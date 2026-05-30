@@ -64,6 +64,7 @@ const ah9Line = document.querySelector("#ah9-line");
 const about = document.querySelector("#about");
 const scrollContainer = document.querySelector(".scroll-container");
 let inSection = window.pageYOffset / window.innerHeight;
+const windowWidth = window.innerWidth;
 
 window.addEventListener("scroll", () => {
   inSection = window.pageYOffset / window.innerHeight;
@@ -230,8 +231,6 @@ window.addEventListener("scroll", () => {
   if (inSection > 9.5 && inSection <= 10.5) {
     ah8Heading.style.opacity = 1;
     ah8Quote.style.opacity = 1;
-    ah8Quote.style.transitionDelay = "0.5s";
-    ah8QuoteCover.style.transitionDelay = "1s";
     ah8QuoteCover.style.backdropFilter = "blur(0px)";
     ah8Desc1.style.transitionDelay = "0.25s";
     ah8Desc1.style.opacity = 1;
@@ -242,8 +241,6 @@ window.addEventListener("scroll", () => {
   } else {
     ah8Heading.style.opacity = 0;
     ah8Quote.style.opacity = 0;
-    ah8Quote.style.transitionDelay = "0s";
-    ah8QuoteCover.style.transitionDelay = "0s";
     ah8QuoteCover.style.backdropFilter = "blur(8px)";
     ah8Desc1.style.transitionDelay = "0s";
     ah8Desc1.style.opacity = 0;
@@ -351,5 +348,7 @@ window.addEventListener("scroll", () => {
     ah9Line.style.opacity = 0;
   }
 
-  about.style.transform = `translateX(-${translateX}px)`;
+  if (windowWidth >= 1024) {
+    about.style.transform = `translateX(-${translateX}px)`;
+  }
 });
