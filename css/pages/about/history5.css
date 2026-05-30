@@ -1,0 +1,85 @@
+#about-history-5 {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 60px;
+  transition: 0.5s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#about-history-5 > div {
+  width: 90%;
+  height: 90%;
+  max-width: 1440px;
+  max-height: 810px;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+#ah5-heading {
+  color: var(--cloud);
+  font-family: "Oswald";
+  font-size: 3rem;
+  width: 0ch;
+  align-self: flex-start;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: 1s ease-out;
+}
+
+#ah5-desc {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+#ah5-desc > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+#ah5-desc-1 {
+  color: var(--cloud);
+  font-family: "Inter";
+  text-align: start;
+  transition: 0.5s ease-out;
+  max-width: 720px;
+  transition-delay: 0.25s;
+  align-self: center;
+  opacity: 0;
+}
+
+#ah5-desc-2 {
+  color: var(--cloud);
+  font-family: "Inter";
+  text-align: end;
+  transition: 0.5s ease-out;
+  transition-delay: 0.5s;
+  opacity: 0;
+}
+
+#ah5-desc-3 {
+  color: var(--mint);
+  font-family: "Inter";
+  text-align: end;
+  transition: 0.5s ease-out;
+  transition-delay: 0.75s;
+  opacity: 0;
+}
+
+#ah5-racket {
+  position: fixed;
+  bottom: -80vh;
+  left: 5vw;
+  height: 110vh;
+  transform: rotateZ(180deg) rotateY(180deg);
+  filter: grayscale(100);
+  transition: 0.25s ease-in-out;
+  z-index: -10;
+}

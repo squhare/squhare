@@ -10,7 +10,7 @@ const teamScoresDiv = document.querySelector("#awwd-mh-scores");
 function generateTeamScores() {
   let playerScore = [0, 0, 0, 0];
 
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 13; i++) {
     const score = Math.floor(Math.random() * 4);
 
     if (score > 1) {
@@ -23,21 +23,21 @@ function generateTeamScores() {
 
     playerScore[score]++;
 
-    renderTeamScore(score, playerScore[score], i == 11);
+    renderTeamScore(score, playerScore[score], i == 12);
   }
 
   team1ScoreDiv.innerHTML = team1Score;
   team2ScoreDiv.innerHTML = team2Score;
 
   teamScoresDiv.innerHTML += `<div>
-            <span ${teamScores[11] < 2 ? 'class="about-text-accent"' : ""}>${team1Score}</span>
-            <span ${teamScores[11] > 1 ? 'class="about-text-accent"' : ""}>${team2Score}</span>
+            <span ${teamScores[12] < 2 ? 'class="about-text-accent"' : ""}>${team1Score}</span>
+            <span ${teamScores[12] > 1 ? 'class="about-text-accent"' : ""}>${team2Score}</span>
           </div>`;
 
   const team1HistoryDiv = document.querySelector("#awwd-mh-team1");
   const team2HistoryDiv = document.querySelector("#awwd-mh-team2");
 
-  if (teamScores[11] > 1) {
+  if (teamScores[12] > 1) {
     team2Div.classList.add("about-text-accent");
     team2ScoreDiv.classList.add("about-text-accent");
     team2HistoryDiv.classList.add("about-text-accent");
