@@ -1,0 +1,135 @@
+.create-card {
+  display: flex;
+  flex-direction: column;
+  border: 12px double var(--mint-card);
+  background: var(--russian);
+  color: var(--mint-card);
+}
+
+.create-card * {
+  font-size: 1rem;
+}
+
+.create-card .card-header {
+  border-bottom: 4px solid var(--mint-card);
+}
+
+.create-card .card-header h2 {
+  margin: 0 16px;
+  padding: 0 8px;
+  border-inline: 4px solid var(--mint-card);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.create-card .header-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-card .title {
+  flex: 1;
+
+  border-right: 2px solid var(--mint-card);
+  display: flex;
+  align-items: center;
+}
+
+#modeText {
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.create-card .mode-section {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  border-left: 2px solid var(--mint-card);
+}
+
+#changeMode {
+  background: none;
+  border: none;
+  color: var(--mint-card);
+  cursor: pointer;
+  font-size: 0.create-card .8rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.create-card .card-body {
+  display: flex;
+  flex-direction: column;
+  margin: 0 16px;
+  border-inline: 4px solid var(--mint-card);
+}
+
+.create-card .player-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 8px;
+}
+
+.create-card .player-column:first-child {
+  border-bottom: 2px solid var(--mint-card);
+}
+
+.create-card .player-column input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 0;
+}
+
+.create-card .player-column input:focus {
+  outline: none;
+  border-color: var(--mint-card);
+}
+
+.create-card .card-footer {
+  border-top: 4px solid var(--mint-card);
+}
+
+.create-card .footer-content {
+  margin: 0 16px;
+  padding: 8px;
+  border-inline: 4px solid var(--mint-card);
+}
+
+.create-card .create-btn {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  background: var(--mint-card);
+  color: var(--russian);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.create-card .create-btn:hover {
+  background: var(--russian);
+  color: var(--mint-card);
+}
+
+@media (min-width:1024px) {
+  .create-card .card-body {
+    flex-direction: row;
+  }
+
+  .create-card .player-column:first-child {
+    border-bottom: none;
+    border-right: 2px solid var(--mint-card);
+  }
+
+  .create-card .player-column:last-child {
+    border-left: 2px solid var(--mint-card);
+  }
+}

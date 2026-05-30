@@ -1,0 +1,256 @@
+.benefit-wrapper {
+  height: calc(100vh - 60px);
+  width: 100vw;
+  position: absolute;
+  top: 100vh;
+  transition: all 0.5s ease-out;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.benefit-grid {
+  height: 100%;
+  width: 100%;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+
+.benefit-grid .benefit-card {
+  width: 100%;
+  height: fit-content;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.5s ease;
+}
+
+.benefit-grid .benefit-card {
+  height: 33.3%;
+}
+
+.benefit-grid:has(.card-content:hover) .benefit-card,
+.benefit-grid:has(.benefit-card:nth-child(1)>.filler:nth-child(2):hover) .benefit-card:not(:nth-child(2)),
+.benefit-grid:has(.benefit-card:nth-child(1)>.filler:nth-child(3):hover) .benefit-card:not(:nth-child(3)),
+.benefit-grid:has(.benefit-card:nth-child(2)>.filler:nth-child(2):hover) .benefit-card:not(:nth-child(3)) {
+  height: 30%;
+}
+
+.benefit-grid .benefit-card:has(.card-content:hover),
+.benefit-grid:has(.benefit-card:nth-child(1)>.filler:nth-child(2):hover) .benefit-card:nth-child(2),
+.benefit-grid:has(.benefit-card:nth-child(1)>.filler:nth-child(3):hover) .benefit-card:nth-child(3),
+.benefit-grid:has(.benefit-card:nth-child(2)>.filler:nth-child(2):hover) .benefit-card:nth-child(3) {
+  height: 40%;
+}
+
+.benefit-grid .benefit-card>* {
+  padding: 1.5rem;
+}
+
+.benefit-grid .filler {
+  width: 25%;
+  transition: all 0.3s ease;
+}
+
+.benefit-grid .filler:not(:last-child) {
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+.benefit-grid .card-content {
+  box-sizing: border-box;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.benefit-grid .card-content * {
+  transition: all 0.3s ease;
+}
+
+.benefit-grid .card-content:last-child {
+  border: none;
+}
+
+.benefit-grid .benefit-card:nth-child(1) .card-content {
+  padding-top: 60px;
+  width: 50%;
+}
+
+.benefit-grid .benefit-card:nth-child(2) .card-content {
+  width: 75%;
+}
+
+.benefit-grid .benefit-card:nth-child(3) .card-content {
+  width: 100%;
+}
+
+.benefit-grid .benefit-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.benefit-grid .benefit-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.benefit-grid .benefit-icon img {
+  height: 32px;
+}
+
+.benefit-grid .benefit-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(179, 253, 44, 0.6);
+  transition: color 0.3s ease;
+}
+
+.benefit-grid .benefit-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.benefit-grid .benefit-desc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+
+
+
+.benefit-mintson {
+  background-color: var(--mint-card);
+  border-color: var(--russian);
+}
+
+.benefit-mintson .card-content,
+.benefit-mintson .filler {
+  border-color: var(--russian);
+}
+
+.benefit-mintson * {
+  color: var(--mint-card) !important;
+}
+
+.benefit-mintson .benefit-card .benefit-icon {
+  color: var(--russian);
+  background-color: var(--mint-card);
+}
+
+.benefit-mintson .benefit-title,
+.benefit-mintson .benefit-desc {
+  color: var(--russian) !important;
+}
+
+.benefit-mintson .benefit-card:has(.card-content:hover) .card-content,
+.benefit-mintson .filler:hover,
+.benefit-mintson:has(.benefit-card:nth-child(2)>.card-content:hover) .benefit-card:nth-child(1) .filler:nth-child(2),
+.benefit-mintson:has(.benefit-card:nth-child(1)>.filler:nth-child(2):hover) .benefit-card:nth-child(2) .card-content,
+
+.benefit-mintson:has(.benefit-card:nth-child(3)>.card-content:hover) .benefit-card:nth-child(1) .filler:nth-child(3),
+.benefit-mintson:has(.benefit-card:nth-child(3)>.card-content:hover) .benefit-card:nth-child(2) .filler:nth-child(2),
+
+.benefit-mintson:has(.benefit-card:nth-child(1)>.filler:nth-child(3):hover) .benefit-card:nth-child(2) .filler:nth-child(2),
+.benefit-mintson:has(.benefit-card:nth-child(2)>.filler:nth-child(2):hover) .benefit-card:nth-child(1) .filler:nth-child(3),
+
+.benefit-mintson:has(.benefit-card:nth-child(1)>.filler:nth-child(3):hover) .benefit-card:nth-child(3) .card-content,
+.benefit-mintson:has(.benefit-card:nth-child(2)>.filler:nth-child(2):hover) .benefit-card:nth-child(3) .card-content
+{
+  background-color: var(--russian);
+}
+
+.benefit-mintson .benefit-card:has(.card-content:hover) *,
+.benefit-mintson:has(.benefit-card:nth-child(1)>.filler:nth-child(2):hover) .benefit-card:nth-child(2) *,
+.benefit-mintson:has(.benefit-card:nth-child(1)>.filler:nth-child(3):hover) .benefit-card:nth-child(3) *,
+.benefit-mintson:has(.benefit-card:nth-child(2)>.filler:nth-child(2):hover) .benefit-card:nth-child(3) * {
+  color: var(--mint-card) !important;
+}
+
+
+
+
+.benefit-blokd {
+  background-color: var(--neon);
+  border-color: var(--dark-ocean);
+}
+
+.benefit-blokd .card-content,
+.benefit-blokd .filler {
+  border-color: var(--dark-ocean);
+}
+
+.benefit-blokd * {
+  color: var(--neon) !important;
+}
+
+.benefit-blokd .benefit-card .benefit-icon {
+  color: var(--dark-ocean);
+  background-color: var(--neon);
+}
+
+.benefit-blokd .benefit-title,
+.benefit-blokd .benefit-desc {
+  color: var(--dark-ocean) !important;
+}
+
+.benefit-blokd .benefit-card:has(.card-content:hover) .card-content,
+.benefit-blokd .filler:hover,
+.benefit-blokd:has(.benefit-card:nth-child(2)>.card-content:hover) .benefit-card:nth-child(1) .filler:nth-child(2),
+.benefit-blokd:has(.benefit-card:nth-child(1)>.filler:nth-child(2):hover) .benefit-card:nth-child(2) .card-content,
+
+.benefit-blokd:has(.benefit-card:nth-child(3)>.card-content:hover) .benefit-card:nth-child(1) .filler:nth-child(3),
+.benefit-blokd:has(.benefit-card:nth-child(3)>.card-content:hover) .benefit-card:nth-child(2) .filler:nth-child(2),
+
+.benefit-blokd:has(.benefit-card:nth-child(1)>.filler:nth-child(3):hover) .benefit-card:nth-child(2) .filler:nth-child(2),
+.benefit-blokd:has(.benefit-card:nth-child(2)>.filler:nth-child(2):hover) .benefit-card:nth-child(1) .filler:nth-child(3),
+
+.benefit-blokd:has(.benefit-card:nth-child(1)>.filler:nth-child(3):hover) .benefit-card:nth-child(3) .card-content,
+.benefit-blokd:has(.benefit-card:nth-child(2)>.filler:nth-child(2):hover) .benefit-card:nth-child(3) .card-content
+{
+  background-color: var(--dark-ocean);
+}
+
+.benefit-blokd .benefit-card:has(.card-content:hover) *,
+.benefit-blokd:has(.benefit-card:nth-child(1)>.filler:nth-child(2):hover) .benefit-card:nth-child(2) *,
+.benefit-blokd:has(.benefit-card:nth-child(1)>.filler:nth-child(3):hover) .benefit-card:nth-child(3) *,
+.benefit-blokd:has(.benefit-card:nth-child(2)>.filler:nth-child(2):hover) .benefit-card:nth-child(3) * {
+  color: var(--neon) !important;
+}
+
+
+@media (max-width: 850px) {
+  .filler {
+    display: none;
+  }
+
+  .card-content {
+    width: 100vw !important;
+    border-right: none !important;
+  }
+}

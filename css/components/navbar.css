@@ -1,16 +1,4 @@
-@font-face {
-  font-family: "Poppins";
-  src: url(./font/Poppins-Regular.ttf);
-  font-display: swap;
-  font-weight: 500;
-}
-
-:root {
-  --mint-card: #ddfef8;
-  --russian: #23194f;
-  --neon: #b8fb3c;
-  --dark-ocean: #03045e;
-}
+@import url(../base/template.css);
 
 * {
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -148,12 +136,18 @@
 .navbar-mintson span {
   color: var(--dark-ocean);
 }
+.navbar-mintson .bar {
+  background-color: var(--dark-ocean);
+}
 
 .navbar-blokd {
   border-bottom: 1px solid rgba(35, 25, 79, 0.3);
 }
 .navbar-blokd span {
   color: var(--russian);
+}
+.navbar-blokd .bar {
+  background-color: var(--russian);
 }
 
 @media (max-width: 850px) {

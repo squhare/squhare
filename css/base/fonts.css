@@ -6,3 +6,17 @@
   src: url(../../font/Oswald-Bold.ttf);
   /* font-display: swap;   */
 }
+
+@font-face {
+  font-family: "Poppins";
+  src: url(../../font/Poppins-Regular.ttf);
+  font-display: swap;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Poppins-Italic-Light";
+  src: url(./font/Poppins-LightItalic.ttf);
+  font-display: swap;
+  font-weight: 100;
+}

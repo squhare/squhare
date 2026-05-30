@@ -1,7 +1,12 @@
+import { intro } from "./navbar.js";
+
 const titleSection = document.querySelector(".title-section");
 const content = document.querySelector(".content");
 const back = document.querySelectorAll(".back");
-const profileSectionWrapper = document.querySelector(".profileSectionWrapper");
+const profileSectionWrapper = document.querySelectorAll(
+  ".profileSectionWrapper",
+);
+const benefit = document.querySelectorAll(".benefit-wrapper");
 
 const navbar = document.querySelector(".navbar");
 
@@ -11,12 +16,21 @@ const blokd = document.querySelector(".blokd");
 const changeMode = document.querySelector("#changeMode");
 const modeText = document.querySelector("#modeText");
 const playerContainer = document.querySelector("#playerContainer");
+const matchCard = document.querySelectorAll(".match-card");
+
+const timer = document.getElementById("timer");
+const pauseBtn = document.getElementById("pauseBtn");
+const pauseText = document.getElementById("pauseText");
 
 let mode = "double";
 let introStatus = true;
 let scrollY = 0;
 let needUpdate = true;
 let serviceSelected = null;
+
+let totalSeconds = 10 * 60;
+let isRunning = true;
+let interval;
 
 const platform = () => navigator.platform;
 const desktopPlatforms = [
@@ -40,10 +54,21 @@ const mobilePlatforms = [
 ];
 const pages = ["about", "products", "contacts"];
 const animaKeyframe = desktopPlatforms.includes(platform())
-  ? [0, 500, 3000]
-  : [0, 500, 3000];
+  ? [0, 500, 3000, 4000]
+  : [0, 500, 2000, 2800];
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  interval = setInterval(() => {
+    if (isRunning && totalSeconds >= 0) {
+      updateTimer();
+    }
+  }, 1000);
+
+  pauseBtn.addEventListener("click", () => {
+    isRunning = !isRunning;
+
+    pauseText.innerText = isRunning ? "PAUSE" : "PLAY";
+  });
   window.addEventListener(
     "wheel",
     (e) => {
@@ -88,20 +113,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (serviceSelected) return;
     scrollY = 500;
     serviceSelected = "mintson";
-    navbar.classList.add('navbar-mintson')
+    navbar.classList.add("navbar-mintson");
     needUpdate = true;
   });
   blokd.addEventListener("click", () => {
     if (serviceSelected) return;
     scrollY = 500;
     serviceSelected = "blokd";
-    navbar.classList.add('navbar-blokd')
+    navbar.classList.add("navbar-blokd");
     needUpdate = true;
   });
   back.forEach((item) => {
     item.addEventListener("click", (e) => {
       e.stopPropagation();
-      navbar.classList.remove(`navbar-${serviceSelected}`)
+      navbar.classList.remove(`navbar-${serviceSelected}`);
       serviceSelected = null;
       scrollY = 0;
       needUpdate = true;
@@ -114,9 +139,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   renderPlayers();
-
+  
+  await intro();
   updateScroll();
+
 });
+
+function updateTimer() {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  timer.innerText =
+    String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+
+  if (totalSeconds <= 0) {
+    clearInterval(interval);
+    pauseText.innerText = "DONE";
+  }
+
+  totalSeconds--;
+}
 
 function limitScroll() {
   const maxScroll = animaKeyframe[animaKeyframe.length - 1];
@@ -166,7 +208,11 @@ function renderPlayers() {
 }
 
 function animate() {
+  let animaL;
+  let animaR;
+
   const isMobile = mobilePlatforms.includes(platform());
+  const isMobileView = window.innerWidth <= 850;
   const viewHeight = window.innerHeight;
   const viewWidth = window.innerWidth;
 
@@ -179,41 +225,67 @@ function animate() {
   animaR = (start) =>
     reverseLinear(start, animaKeyframe[key], animaKeyframe[key + 1]);
 
-  if ((serviceSelected && scrollY < animaKeyframe[1]) || (!serviceSelected && scrollY > animaKeyframe[1])) {
-    scrollY = animaKeyframe[1]
-  } 
+  if (
+    (serviceSelected && scrollY < animaKeyframe[1]) ||
+    (!serviceSelected && scrollY > animaKeyframe[1])
+  ) {
+    scrollY = animaKeyframe[1];
+  }
 
   if (!serviceSelected) {
-    mintson.style.width = "50vw";
+    mintson.style.width = isMobile || isMobileView ? "100vw" : "50vw";
+    mintson.style.height = "100%";
     mintson.children[1].style.left = 0;
-    blokd.style.width = "50vw";
+    blokd.style.width = isMobile || isMobileView ? "100vw" : "50vw";
+    blokd.style.height = "100%";
     blokd.children[1].style.left = 0;
-
+    
     titleSection.style.top = `-${animaL(300)}px`;
-    content.style.top = `-${animaL(196)}px`;
-    content.style.height = `${viewHeight - animaR(196)}px`;
+    content.style.top = `-${animaL(isMobile || isMobileView ? 148 : 196)}px`;
+    content.style.height = `${viewHeight - animaR(isMobile || isMobileView ? 148 : 196)}px`;
   } else {
     const selected = serviceSelected === "blokd" ? blokd : mintson;
     const nonSelected = serviceSelected !== "blokd" ? blokd : mintson;
 
-    selected.style.width = "100vw";
+    if (isMobile || isMobileView) {
+      selected.style.height = "100vh";
+      nonSelected.style.height = 0;
+    } else {
+      selected.style.width = "100vw";
+      nonSelected.style.width = 0;
+    }
     selected.children[1].style.left = "100vw";
-    nonSelected.style.width = 0;
 
     titleSection.style.top = `-300px`;
-    content.style.top = `-196px`;
+    content.style.top = `-${isMobile || isMobileView ? 148 : 196}px`;
     content.style.height = `${viewHeight}px`;
   }
-  profileSectionWrapper.scrollLeft = 0;
+  profileSectionWrapper.forEach((item) => (item.scrollLeft = 0));
 
   if (key < 1) return;
 
   titleSection.style.top = `-300px`;
-  content.style.top = `-196px`;
+  content.style.top = `-${isMobile || isMobileView ? 148 : 196}px`;
   content.style.height = `${viewHeight}px`;
 
   if (!serviceSelected && key < 1) return;
-  profileSectionWrapper.scrollLeft = animaL(profileSectionWrapper.scrollWidth - window.innerWidth);
+  const serviceId = serviceSelected == "mintson" ? 0 : 1;
+
+  profileSectionWrapper[serviceId].scrollLeft = animaL(
+    profileSectionWrapper[serviceId].scrollWidth - window.innerWidth,
+  );
+  matchCard.forEach((item, index) => {
+    item.style.transform = `translate${isMobile || isMobileView ? "X" : "Y"}(${(isMobile || isMobileView ? index < 6 : index % 2 == 0) ? `${animaL(75)}%` : `${-50 - animaL(75)}%`})`;
+  });
+  benefit[serviceId].style.top = `${window.innerHeight}px`;
+
+  if (key < 2) return;
+
+  profileSectionWrapper[serviceId].scrollLeft =
+    profileSectionWrapper[serviceId].scrollWidth - window.innerWidth;
+
+  const benefitPos = `${animaR(window.innerHeight) + 60}px`;
+  benefit[serviceId].style.top = benefitPos;
 }
 
 function styleValue(

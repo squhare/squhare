@@ -1,0 +1,46 @@
+.introContainer {
+  height: 100vh;
+  width: 100vw;
+  z-index: 99;
+  background-color: #95f2c8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: top 1s ease-in;
+}
+
+.introContainer * {
+  font-family: "Oswald";
+  color: #0b301f;
+  text-wrap: nowrap;
+}
+
+.introContent {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+.introText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.introText>div:nth-child(1) {
+  letter-spacing: 1px;
+  font-size: 10vw;
+}
+
+.introText>div:nth-child(2) {
+  font-family: "Poppins";
+  letter-spacing: 1rem;
+  font-size: 2vw;
+}

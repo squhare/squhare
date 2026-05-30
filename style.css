@@ -1,28 +1,6 @@
-@font-face {
-  font-family: "Oswald";
-  src: url(./font/Oswald-Bold.ttf);
-  /* font-display: swap;   */
-}
-
-@font-face {
-  font-family: "Bebas";
-  src: url(./font/BebasNeue-Regular.ttf);
-  /* font-display: swap;   */
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url(./font/Poppins-Regular.ttf);
-  font-display: swap;
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url(./font/Poppins-LightItalic.ttf);
-  font-display: swap;
-  font-weight: 100;
-}
+@import url(./css/base/template.css);
+@import url(./css/components/navbar.css);
+@import url(./css/components/intro.css);
 
 :root {
   --height-field: 2000px;
@@ -181,11 +159,12 @@ body {
 } */
 
 .viewer {
+  width: 400px;
   transform-style: preserve-3d;
   transform: translateZ(calc(var(--height-field) / 2 * -1 - 2000px));
   height: var(--height-field);
   display: flex;
-  align-items: end;
+  align-items: center;
   /* contain: layout paint size; */
 }
 
@@ -1301,7 +1280,6 @@ body {
 
 .infoScrollContent {
   font-family: "Poppins";
-  font-weight: 100;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   padding: 3px 18px;
@@ -1357,53 +1335,6 @@ body {
 
 
 
-
-.introContainer {
-  height: 100vh;
-  width: 100vw;
-  z-index: 99;
-  background-color: #95f2c8;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: top 1s ease-in;
-}
-
-.introContainer * {
-  font-family: "Oswald";
-  color: #0b301f;
-  text-wrap: nowrap;
-}
-
-.introContent {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-}
-
-.introText {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.introText>div:nth-child(1) {
-  letter-spacing: 1px;
-  font-size: 10vw;
-}
-
-.introText>div:nth-child(2) {
-  font-family: "Poppins";
-  letter-spacing: 1rem;
-  font-size: 2vw;
-}
 
 @media (max-width: 850px) {
   .container {
@@ -1478,9 +1409,6 @@ body {
     font-size: 2.5rem !important;
   }
 
-  .introContainer {
-    top: 50dvh;
-  }
 }
 
 @media (max-width: 520px) {

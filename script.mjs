@@ -1,3 +1,5 @@
+import { intro, introStatus } from "./js/navbar.js";
+
 const content = document.querySelector(".content");
 const overlay = document.querySelector(".overlayScroll");
 const fieldWrapper = document.querySelector(".fieldWrapper");
@@ -26,10 +28,6 @@ const aboutDocumContainer = document.querySelector(
 );
 const filmStrip = document.querySelectorAll(".film-strip");
 
-const navbarBar = document.querySelector(".navbarBar");
-const home = document.querySelector(".navbarTop>span");
-const navbarPage = document.querySelector(".navbarPage");
-
 const introContainer = document.querySelector(".introContainer");
 const infoScrollContent = document.querySelector(".infoScrollContent");
 
@@ -40,7 +38,6 @@ let score = [6, 7];
 const displayScore = document.querySelectorAll(".score-section .score");
 const buttonScore = document.querySelectorAll(".control-section button");
 
-let introStatus = false;
 let scrollY = 0;
 let ticking = false;
 let needUpdate = true;
@@ -76,7 +73,7 @@ const mobilePlatforms = [
   "iPad",
   "iPod",
 ];
-const pages = ["about", "products", "contacts"];
+
 const animaKeyframe = desktopPlatforms.includes(platform())
   ? [0, 500, 2000, 2500, 4500, 6500, 7500, 8500, 9500]
   : [0, 500, 1000, 1500, 2500, 3000, 3500, 4500, 5000];
@@ -257,19 +254,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       handleScoreMisc(index % 2 == 0, index > 1),
     );
   });
-  [...navbarPage.children].forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      location.hash = `/${btn.innerText.toLowerCase()}`;
-      goTo();
-    });
-  });
-  home.addEventListener("click", () => {
-    location.hash = "/";
-    scrollY = 0;
-    needUpdate = true;
-  });
 
-  navbarBar.addEventListener("click", toggleNavbar);
   tryBtn.addEventListener("click", () => {
     scrollY = 1000;
     needUpdate = true;
@@ -309,29 +294,6 @@ function sumScore() {
 
 function ease(target) {
   scrollY += (target - scrollY) * 0.1;
-}
-
-function goTo() {
-  const hash = location.hash.slice(2);
-
-  if (hash == "tentang") window.location.href = 'about.html';
-  if (hash == "layanan") window.location.href = 'services.html';
-
-  if (pages.includes(hash)) needUpdate = true;
-}
-
-async function intro() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      introContainer.style.top = "100vh";
-
-      setTimeout(() => {
-        introStatus = true;
-        introContainer.style.display = 'none'
-      }, 1000);
-      resolve();
-    }, 2000);
-  });
 }
 
 function toggleNavbar(e) {

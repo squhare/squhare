@@ -1,0 +1,128 @@
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.match-grid * {
+  font-size: 0.8rem;
+}
+
+.match-grid .match-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--russian);
+  color: var(--mint-card);
+  border: 12px double var(--mint-card);
+  min-height: fit-content;
+}
+
+.match-grid .match-card:nth-child(even) {
+  transform: translateY(-50%);
+}
+
+.match-grid .card-header {
+  border-bottom: 4px solid var(--mint-card);
+}
+
+.match-grid .card-header h2 {
+  margin: 0 16px;
+  padding: 8px;
+  border-inline: 4px solid var(--mint-card);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.match-grid .card-body {
+  flex: 1;
+  margin: 0 16px;
+  padding-bottom: 16px;
+  border-inline: 4px solid var(--mint-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.match-grid .match-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 8px;
+}
+
+.match-grid .game-label {
+  margin: 0;
+  background: var(--mint-card);
+  color: var(--russian);
+  padding: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.match-grid .status-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.match-grid .score-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--mint-card);
+}
+
+.match-grid .team-row {
+  display: flex;
+  border-bottom: 4px solid var(--mint-card);
+}
+
+.match-grid .team-player {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.match-grid .team-player p {
+  margin: 0;
+  padding-left: 8px;
+  font-weight: bold;
+}
+
+.match-grid .team-score {
+  width: 48px;
+  display: grid;
+  place-items: center;
+  border-left: 4px solid var(--mint-card);
+  font-weight: bold;
+}
+
+.match-grid .card-footer {
+  display: flex;
+  gap: 12px;
+  padding: 6px 8px;
+  border-top: 4px solid var(--mint-card);
+}
+
+.match-grid .card-footer button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: var(--mint-card);
+  color: var(--russian);
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.match-grid .card-footer button:hover {
+  background: var(--russian);
+  color: var(--mint-card);
+}
+
+@media (max-width:850px) {
+  .match-grid {
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
