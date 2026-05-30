@@ -1,0 +1,60 @@
+#about-history-10 {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 60px;
+  transition: 0.5s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#about-history-10 > div {
+  width: 90%;
+  height: 90%;
+  max-width: 1440px;
+  max-height: 810px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+#ah10-heading {
+  flex: 1;
+  color: var(--grass);
+  font-family: "Oswald";
+  font-size: 3rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+#ah10-desc {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 2rem;
+  padding-top: 72px;
+}
+
+#ah10-desc-1 {
+  color: var(--squhare);
+  font-family: "Inter";
+  text-align: start;
+  flex: 1;
+}
+
+#ah10-desc-2 {
+  color: var(--squhare);
+  font-family: "Inter";
+  text-align: start;
+  flex: 1;
+}
+
+#ah10-desc-3 {
+  color: var(--squhare);
+  font-family: "Inter";
+  text-align: start;
+  flex: 1;
+}

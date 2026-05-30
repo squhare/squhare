@@ -1,7 +1,7 @@
 #about-history-2 {
   width: 100vw;
   height: 100vh;
-  /* opacity: 0; */
+  padding-top: 60px;
   transition: 0.5s ease-out;
   display: flex;
   justify-content: center;
@@ -9,12 +9,91 @@
   position: relative;
 }
 
+#about-history-2 > div {
+  width: 90%;
+  height: 90%;
+  max-width: 1440px;
+  max-height: 810px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 #ah2-heading {
   color: var(--cloud);
   font-family: "Oswald";
   font-size: 3rem;
-  /* width: 0ch; */
+  width: 0ch;
+  align-self: flex-end;
   overflow: hidden;
   white-space: nowrap;
-  transition: 1s ease-out;
+  transition: 0.5s ease-out;
+  text-align: end;
+}
+
+#ah2-quote {
+  display: flex;
+  flex-direction: column;
+  padding-block: 4rem;
+  padding-inline: 2rem;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
+}
+
+#ah2-q {
+  text-align: center;
+  color: var(--mint);
+  font-size: 4rem;
+  font-family: "Inter";
+}
+
+em {
+  font-family: inherit;
+}
+
+#ah2-cite {
+  text-align: center;
+  color: var(--sunshine);
+  font-size: 1rem;
+  font-family: "Inter";
+}
+
+#ah2-quote-cover {
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s ease-in-out;
+  transition-delay: 0.25s;
+}
+
+#ah2-desc {
+  color: var(--cloud);
+  font-family: "Inter";
+  text-align: start;
+  transition: 0.5s ease-out;
+  transition-delay: 0.5s;
+  opacity: 0;
+}
+
+#ah2-cat1 {
+  position: fixed;
+  bottom: -200vh;
+  right: 20vw;
+  height: 100vh;
+  filter: grayscale(100);
+  transition: 0.5s ease-in-out;
+}
+
+#ah2-cat2 {
+  position: fixed;
+  bottom: -125vh;
+  right: 0;
+  height: 125vh;
+  filter: grayscale(100);
+  transition: 0.5s ease-in-out;
 }

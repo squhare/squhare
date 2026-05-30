@@ -1,0 +1,129 @@
+#about-history-3 {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 60px;
+  transition: 0.5s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#about-history-3 > div {
+  width: 90%;
+  height: 90%;
+  max-width: 1440px;
+  max-height: 810px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#ah3-heading {
+  color: var(--cloud);
+  font-family: "Oswald";
+  font-size: 3rem;
+  width: 0ch;
+  align-self: flex-start;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: 1s ease-out;
+}
+
+#ah3-desc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#ah3-desc-1 {
+  color: var(--grass);
+  font-family: "Inter";
+  text-align: start;
+  transition: 0.5s ease-out;
+  max-width: 720px;
+  transition-delay: 0.25s;
+}
+
+#ah3-desc > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20rem;
+}
+
+#ah3-desc-2 {
+  color: var(--grass);
+  font-family: "Inter";
+  text-align: start;
+  transition: 0.5s ease-out;
+  transition-delay: 0.5s;
+}
+
+#ah3-desc-3 {
+  color: var(--grass);
+  font-family: "Inter";
+  text-align: end;
+  transition: 0.5s ease-out;
+  transition-delay: 0.75s;
+}
+
+#ah3-shuttlecock {
+  position: fixed;
+  top: -40vh;
+  right: -80vw;
+  height: 20vh;
+  transform: rotate(60deg);
+  filter: grayscale(100);
+  transition: 0.2s ease-in-out;
+}
+
+#ah3-display {
+  position: fixed;
+  top: 40vh;
+  right: 20vw;
+  padding: 1vh;
+  background-color: var(--squhare);
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  z-index: -10;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+}
+
+#ah3-display > div {
+  background-color: var(--squhare);
+  display: flex;
+  gap: 1vh;
+}
+
+#ah3-mintson {
+  background-color: var(--grass);
+  font-family: "Oswald";
+  color: var(--squhare);
+  font-size: 5vh;
+  text-align: center;
+}
+
+.ah3-display-team {
+  padding-block: 3vh;
+  padding-inline: 6vh;
+  background-color: var(--grass);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ah3-display-team > span {
+  font-family: "Oswald";
+  color: var(--squhare);
+  font-size: 5vh;
+}
+
+.ah3-display-team > span:last-child {
+  font-family: "Oswald";
+  color: var(--squhare);
+  font-size: 8vh;
+}
