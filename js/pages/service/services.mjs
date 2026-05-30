@@ -1,4 +1,4 @@
-import { intro } from "./navbar.js";
+import { intro } from "../../components/navbar.js";
 
 const titleSection = document.querySelector(".title-section");
 const content = document.querySelector(".content");
