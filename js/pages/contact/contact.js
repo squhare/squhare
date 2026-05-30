@@ -1,6 +1,7 @@
 import { intro, introStatus } from "../../components/navbar.js";
 
 const form = document.querySelector(".contentForm");
+const contact = document.querySelectorAll('.contact');
 
 let scrollY = 0;
 let needUpdate = true;
@@ -68,6 +69,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     },
     { passive: false },
   );
+
+  contact.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      if (index == 0) {
+        window.open("https://www.instagram.com/hylmi.az/", "_blank")
+      }
+      if (index == 1) {
+        window.open("https://wa.me/6285697189336", "_blank")
+      }
+      if (index == 2) {
+        window.open("https://github.com/squhare", "_blank")
+      }
+    })
+  })
 
   setup();
 

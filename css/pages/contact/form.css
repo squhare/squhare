@@ -46,7 +46,12 @@
 #step-6 {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   transition: opacity .5s;
+}
+#step-6 {
+  align-items: start;
+  justify-content: center;
 }
 
 #step-6 {
@@ -217,10 +222,14 @@
   display: none;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
 @media (min-width: 768px) {
   #madlib-form {
     gap: 2rem;
-    font-size: 2.25rem;
+    font-size: 3rem;
     line-height: 1.4;
   }
 
