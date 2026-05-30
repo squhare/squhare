@@ -1,6 +1,7 @@
-@import url(./css/base/template.css);
-@import url(./css/components/navbar.css);
-@import url(./css/components/intro.css);
+@import url(../../base/template.css);
+@import url(../../base/template.css);
+@import url(../../components/navbar.css);
+@import url(../../components/intro.css);
 
 :root {
   --height-field: 2000px;
@@ -159,7 +160,7 @@ body {
 } */
 
 .viewer {
-  width: 400px;
+  /* width: 400px; */
   transform-style: preserve-3d;
   transform: translateZ(calc(var(--height-field) / 2 * -1 - 2000px));
   height: var(--height-field);

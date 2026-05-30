@@ -30,14 +30,14 @@ body {
 }
 
 /* Media defaults */
-img,
+/* img,
 picture,
 video,
 canvas,
 svg {
   display: block;
   max-width: 100%;
-}
+} */
 
 /* Form elements inherit font */
 input,

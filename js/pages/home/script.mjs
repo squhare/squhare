@@ -1,4 +1,4 @@
-import { intro, introStatus } from "./js/navbar.js";
+import { intro, introStatus } from "../../components/navbar.js";
 
 const content = document.querySelector(".content");
 const overlay = document.querySelector(".overlayScroll");
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     frameWindow.classList.add("frame-window");
 
     const img = document.createElement("img");
-    img.src = `./assets/roll${i}.jpeg`;
+    img.src = `./assets/images/roll${i}.jpeg`;
     img.classList.add("frame-roll");
 
     frameWindow.appendChild(img);
