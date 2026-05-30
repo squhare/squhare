@@ -1,4 +1,4 @@
-import { intro } from "../../components/navbar.js";
+import { intro, introStatus } from "../../components/navbar.js";
 
 const titleSection = document.querySelector(".title-section");
 const content = document.querySelector(".content");
@@ -23,7 +23,6 @@ const pauseBtn = document.getElementById("pauseBtn");
 const pauseText = document.getElementById("pauseText");
 
 let mode = "double";
-let introStatus = true;
 let scrollY = 0;
 let needUpdate = true;
 let serviceSelected = null;
@@ -52,7 +51,6 @@ const mobilePlatforms = [
   "iPad",
   "iPod",
 ];
-const pages = ["about", "products", "contacts"];
 const animaKeyframe = desktopPlatforms.includes(platform())
   ? [0, 500, 3000, 4000]
   : [0, 500, 2000, 2800];

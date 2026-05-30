@@ -1,3 +1,5 @@
+const navbar = document.querySelector(".navbar");
+
 const whoWeAre = document.querySelector("#about-who-we-are");
 const awwaHeading = document.querySelector("#awwa-heading");
 
@@ -325,16 +327,28 @@ window.addEventListener("scroll", () => {
 
   if (inSection <= 2.5) {
     document.body.style.backgroundColor = "var(--mint)";
+    if (![...navbar.classList].includes("navbar-dark")) 
+      navbar.classList.add("navbar-dark");
   } else if (inSection <= 6.5) {
     document.body.style.backgroundColor = "var(--grass)";
+    if ([...navbar.classList].includes("navbar-dark"))
+      navbar.classList.remove("navbar-dark");
   } else if (inSection <= 9.5) {
-    document.body.style.backgroundColor = "var(--squhare)";
+  document.body.style.backgroundColor = "var(--squhare)";
+    if ([...navbar.classList].includes("navbar-dark"))
+      navbar.classList.remove("navbar-dark");
   } else if (inSection <= 10.5) {
     document.body.style.backgroundColor = "var(--grass)";
+    if ([...navbar.classList].includes("navbar-dark"))
+      navbar.classList.remove("navbar-dark");
   } else if (inSection <= 11.5) {
     document.body.style.backgroundColor = "var(--squhare)";
+    if (![...navbar.classList].includes("navbar-dark"))
+      navbar.classList.add("navbar-dark");
   } else {
     document.body.style.backgroundColor = "var(--cloud)";
+    if (![...navbar.classList].includes("navbar-dark"))
+      navbar.classList.add("navbar-dark");
   }
 
   if (inSection > 10.5 && inSection <= 12.5) {

@@ -5,7 +5,7 @@ const introContainer = document.querySelector(".introContainer");
 
 export let introStatus = false;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   navbarBar.addEventListener("click", toggleNavbar);
   [...navbarPage.children].forEach((btn, index) => {
     btn.addEventListener("click", () => {
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   home.addEventListener("click", () => goTo("home"))
+  await intro();
 });
 
 function toggleNavbar(e) {
@@ -26,6 +27,7 @@ async function goTo(loc) {
   if (loc == "home") window.location.href = "/";
   if (loc == "tentang") window.location.href = "about.html";
   if (loc == "layanan") window.location.href = "services.html";
+  if (loc == "kontak") window.location.href = "contact.html";
 }
 
 export async function intro(isOpen = true) {
@@ -38,7 +40,7 @@ export async function intro(isOpen = true) {
         introStatus = isOpen;
         if (isOpen) introContainer.style.display = "none";
         resolve();
-      }, 1200);
-    }, isOpen ? 1000 : 100);
+      }, 800);
+    }, isOpen ? 1000 : 0);
   });
 }

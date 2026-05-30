@@ -1,0 +1,255 @@
+:root {
+  --accentNeon: #ff5c00;
+  --darkCard: #18181b;
+  --textColor: #d4d4d8;
+  --mutedColor: #52525b;
+}
+
+.contentForm {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+  background-color: var(--darkCard);
+  padding: calc(2rem + 60px) 2rem;
+  border-radius: 1rem;
+  transform: scale(0.8);
+  transition:
+    top 0.3s ease-out,
+    border-radius 0.3s ease-out,
+    transform 0.3s ease-out;
+}
+
+#madlib-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  
+  color: var(--textColor);
+}
+
+.inputWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+}
+
+#step-1,
+#step-2,
+#step-3,
+#step-4,
+#step-5,
+#step-6 {
+  display: flex;
+  flex-wrap: wrap;
+  transition: opacity .5s;
+}
+
+#step-6 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.bracket-container {
+  display: inline-flex;
+  align-items: center;
+
+  color: var(--mutedColor);
+
+  transition: color .3s;
+}
+
+.bracket-container:focus-within {
+  color: var(--accentNeon);
+}
+
+.bracket-container>span {
+  user-select: none;
+  font-weight: 900;
+}
+
+.bracket-container>span:first-child {
+  margin-right: .25rem;
+}
+
+.bracket-container>span:last-child {
+  margin-left: .25rem;
+}
+
+.madlib-input {
+  background: transparent;
+
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, .15);
+
+  color: white;
+
+  outline: none;
+
+  padding: .25rem .35rem;
+
+  transition: .3s;
+}
+
+.madlib-input:hover,
+.madlib-input:focus {
+  border-color: rgba(255, 92, 0, .6);
+}
+
+#sender-name {
+  width: 180px;
+}
+
+#sender-org {
+  width: 220px;
+}
+
+#project-location {
+  width: 180px;
+}
+
+#manual-duration {
+  width: 200px;
+}
+
+#sender-email {
+  width: 200px;
+}
+
+#project-type,
+#duration-type {
+  cursor: pointer;
+  background: var(--darkCard);
+  color: white;
+  padding: .25rem .5rem;
+}
+
+#single-date {
+  cursor: pointer;
+  color: var(--accentNeon);
+  padding: .25rem .5rem;
+}
+
+#step-submit {
+  padding-top: 1.5rem;
+  transition: opacity .5s;
+}
+
+.submit-btn {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1rem 2rem;
+
+  border: none;
+  cursor: pointer;
+
+  background: var(--accentNeon);
+  color: white;
+
+  font-size: .875rem;
+  font-weight: 700;
+
+  letter-spacing: .2em;
+  text-transform: uppercase;
+
+  overflow: hidden;
+
+  transition: .3s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 92, 0, .4);
+}
+
+.submit-btn:active {
+  transform: scale(.95);
+}
+
+.submit-bg {
+  position: absolute;
+  inset: 0;
+
+  background: white;
+
+  transform: translateY(100%);
+  transition: transform .3s ease-out;
+
+  z-index: 0;
+}
+
+.submit-btn:hover .submit-bg {
+  transform: translateY(0);
+}
+
+.submit-text,
+.submit-icon {
+  position: relative;
+  z-index: 1;
+
+  transition: .3s;
+}
+
+.submit-btn:hover .submit-text,
+.submit-btn:hover .submit-icon {
+  color: black;
+}
+
+.submit-btn:hover .submit-icon {
+  transform: translateX(8px);
+}
+
+.opacity-20 {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #madlib-form {
+    gap: 2rem;
+    font-size: 2.25rem;
+    line-height: 1.4;
+  }
+
+  #sender-name {
+    width: 320px;
+  }
+
+  #sender-org {
+    width: 360px;
+  }
+
+  #project-location {
+    width: 300px;
+  }
+
+  #manual-duration {
+    width: 320px;
+  }
+
+  #sender-email {
+    width: 320px;
+  }
+
+  #project-type,
+  #duration-type {
+    font-size: 1.875rem;
+  }
+
+  #single-date {
+    font-size: 1.5rem;
+  }
+}

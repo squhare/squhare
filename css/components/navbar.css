@@ -130,6 +130,20 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+.navbar-dark {
+  border-bottom: 1px solid rgba(12, 33, 24, 0.3);
+}
+.navbar-dark span {
+  color: var(--grass);
+}
+.navbar-dark .bar {
+  background-color: var(--grass);
+}
+.navbar-dark .navbarPage > span:hover {
+  border-left: 1px solid rgba(12, 33, 24, 0.3) !important;
+  border-right: 1px solid rgba(12, 33, 24, 0.3) !important;
+}
+
 .navbar-mintson {
   border-bottom: 1px solid rgba(3, 4, 94, 0.3);
 }
@@ -138,6 +152,10 @@
 }
 .navbar-mintson .bar {
   background-color: var(--dark-ocean);
+}
+.navbar-mintson .navbarPage > span:hover {
+  border-left: 1px solid rgba(3, 4, 94, 0.3) !important;
+  border-right: 1px solid rgba(3, 4, 94, 0.3) !important;
 }
 
 .navbar-blokd {
@@ -148,6 +166,10 @@
 }
 .navbar-blokd .bar {
   background-color: var(--russian);
+}
+.navbar-blokd .navbarPage > span:hover {
+  border-left: 1px solid rgba(35, 25, 79, 0.3) !important;
+  border-right: 1px solid rgba(35, 25, 79, 0.3) !important;
 }
 
 @media (max-width: 850px) {

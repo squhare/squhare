@@ -1,0 +1,108 @@
+@import url(../../pages/contact/form.css);
+@import url(../../components/navbar.css);
+@import url(../../components/intro.css);
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  background: var(--squhare);
+  overflow: hidden;
+}
+
+.contentWrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.contentWrapper > * {
+  min-height: 100vh;
+  width: 100vw;
+}
+.contentWrapper > *:not(:nth-child(1)) {
+  position: absolute;
+  top: 100vh;
+}
+
+.contentLand {
+  display: flex;
+  top: 60px;
+  position: relative;
+  min-height: unset;
+  height: calc(100vh - 60px);
+  flex-direction: column;
+}
+
+.landText {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.textHead {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.layanan {
+  color: var(--sunshine);
+  text-decoration: underline;
+}
+
+.landContact {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: end;
+}
+
+.contact {
+  height: 180px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+.landContact:has(.contact:hover) .contact {
+  background-color: var(--grass);
+}
+.contact:hover {
+  height: 200px;
+  background-color: var(--sunshine) !important;
+  flex: 2;
+  font-size: 4rem;
+  color: var(--grass);
+}
+
+@media (max-width: 850px) {
+  .textHead {
+    font-size: 3rem;
+  }
+
+  .landContact {
+    flex-direction: column;
+  }
+
+  .contact {
+    width: 100%;
+  }
+
+  .contact:hover {
+    font-size: 2.5rem;
+  }
+}

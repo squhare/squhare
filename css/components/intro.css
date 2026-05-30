@@ -3,14 +3,14 @@
   width: 100vw;
   z-index: 99;
   background-color: #95f2c8;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: top 1s ease-in;
+  transition: top 0.8s ease;
 }
 
 .introContainer * {
@@ -43,4 +43,14 @@
   font-family: "Poppins";
   letter-spacing: 1rem;
   font-size: 2vw;
+}
+
+@media (max-width: 850px) {
+  .introText>div:nth-child(1) {
+    font-size: 3rem;
+  }
+  .introText>div:nth-child(2) {
+    letter-spacing: 0.5rem;
+    font-size: 0.8rem;
+  }
 }
