@@ -1329,8 +1329,9 @@ body {
 .infoSliderArrow {
   position: absolute;
   height: 10px;
+  width: 10px;
   top: 0;
-  aspect-ratio: 1 / 1;
+  /* aspect-ratio: 1 / 1; */
 }
 
 
